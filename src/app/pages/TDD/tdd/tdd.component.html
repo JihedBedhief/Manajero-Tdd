@@ -1,0 +1,138 @@
+<div class="presentation" @fadeIn>
+    <h1>Présentation sur le Test-Driven Development (TDD)</h1>
+  
+    <section @slideIn>
+      <h2>Résumé de la méthodologie</h2>
+      <p>Test-Driven Development (TDD) est une approche de développement où les tests unitaires sont écrits avant le code fonctionnel. Cette méthode assure une couverture de test complète et améliore la qualité du code.</p>
+    </section>
+  
+    <section @slideIn>
+      <h2>Avantages et limitations</h2>
+      <div class="table-container">
+        <h3>Avantages</h3>
+        <table>
+          <tr>
+            <td><img src="assets/check.png" alt="check" /></td>
+            <td>Amélioration de la qualité du code</td>
+          </tr>
+          <tr>
+            <td><img src="assets/check.png" alt="check" /></td>
+            <td>Réduction des erreurs</td>
+          </tr>
+          <tr>
+            <td><img src="assets/check.png" alt="check" /></td>
+            <td>Code plus maintenable</td>
+          </tr>
+          <tr>
+            <td><img src="assets/check.png" alt="check" /></td>
+            <td>Développement basé sur les tests</td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-container">
+        <h3>Limitations</h3>
+        <table>
+          <tr>
+            <td><img src="assets/warning.png" alt="warning" /></td>
+            <td>Nécessite une bonne connaissance des tests unitaires</td>
+          </tr>
+          <tr>
+            <td><img src="assets/warning.png" alt="warning" /></td>
+            <td>Peut ralentir le développement initial</td>
+          </tr>
+          <tr>
+            <td><img src="assets/warning.png" alt="warning" /></td>
+            <td>Complexité accrue</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  
+    <section @slideIn>
+      <h2>Tutoriel exhaustif complet en respectant le modèle Kolb</h2>
+      
+      <h3>Why : Importance de la qualité du code et de la réduction des erreurs</h3>
+      <p>
+        <strong>Qualité du code :</strong> TDD assure que chaque fonctionnalité est testée avant d'être implémentée, garantissant ainsi une meilleure qualité du code.<br>
+        <strong>Réduction des erreurs :</strong> Les tests identifient rapidement les erreurs, réduisant les coûts et les efforts nécessaires pour les corriger plus tard.
+      </p>
+  
+      <h3>What : Processus de Test-Driven Development, phases de tests et meilleures pratiques</h3>
+      <p>
+        <strong>Processus TDD :</strong>
+        <ol>
+          <li>Écrire un test</li>
+          <li>Échouer le test</li>
+          <li>Écrire le code</li>
+          <li>Réussir le test</li>
+          <li>Refactoriser</li>
+        </ol>
+        <strong>Meilleures pratiques :</strong>
+        <ul>
+          <li>Écrire des tests simples et compréhensibles</li>
+          <li>Garder les tests indépendants les uns des autres</li>
+          <li>Réviser et mettre à jour régulièrement les tests pour qu'ils restent pertinents</li>
+        </ul>
+  
+      <h3>How : Implémentation de TDD avec exemples de tests unitaires et guides détaillés</h3>
+      
+      <p>
+        <strong>Guide détaillé :</strong>
+        <ol>
+          <li>Installation de Jest : <code>npm install --save-dev jest</code></li>
+          <li>Configuration du script de test : Ajouter <code>"test": "jest"</code> dans le fichier <code>package.json</code>.</li>
+          <li>Écrire un test : Créer un fichier de test et définir un cas de test.</li>
+          <li>Écrire le code : Implémenter la fonctionnalité pour faire passer le test.</li>
+          <li>Exécuter les tests : Utiliser la commande <code>npm test</code> pour exécuter les tests.</li>
+        </ol>
+  
+      <h3>What if : Adaptations de TDD pour différents types de projets et environnements de développement</h3>
+      <ul>
+        <li>Projets agiles : Intégrer TDD dans les sprints et les itérations.</li>
+        <li>Développement mobile : Utiliser des frameworks de tests spécifiques comme XCTest pour iOS et Espresso pour Android.</li>
+        <li>Projets legacy : Introduire progressivement TDD en commençant par les nouvelles fonctionnalités ou les modules refactorisés.</li>
+      </ul>
+    </section>
+  
+    <section @slideIn>
+      <h2>Dashboard d'application de la méthodologie avec un Template dynamique</h2>
+      
+      <h3>Modèles pour la gestion des tests unitaires, la planification des cycles de tests et l'évaluation de la couverture de code</h3>
+      <p>
+        <strong>Étapes :</strong>
+        <ol>
+          <li>Planification des tests</li>
+          <li>Écriture des tests</li>
+          <li>Exécution des tests</li>
+          <li>Analyse des résultats</li>
+          <li>Refactorisation et amélioration continue</li>
+        </ol>
+        <strong>Itérations :</strong> Chaque cycle de développement doit inclure des phases de tests et de validation.<br>
+        <strong>Formulaires :</strong> Templates pour documenter les cas de tests, les résultats des tests, et les modifications du code.<br>
+        <strong>Tableaux de bord :</strong> Suivre la couverture de code, les statistiques de tests réussis/échoués, et les problèmes détectés.
+  
+      <h3>Modèle dynamique pour intégrer TDD</h3>
+      <p>
+        <strong>Diagrammes de flux pour intégrer TDD dans un processus agile de développement centré sur la qualité</strong>
+        <ol>
+          <li>Backlog Refinement : Identifiez les exigences et définissez les cas de tests.</li>
+          <li>Sprint Planning : Inclure les tâches de tests unitaires et de développement.</li>
+          <li>Développement :
+            <ul>
+              <li>Écrire un test</li>
+              <li>Écrire le code pour faire passer le test</li>
+              <li>Refactoriser</li>
+            </ul>
+          </li>
+          <li>Review et Retrospective : Analyser les résultats des tests et les ajustements nécessaires.</li>
+        </ol>
+    </section>
+  
+    <section @slideIn>
+      <h2>Conclusion</h2>
+      <p>
+        Le Test-Driven Development (TDD) est une méthodologie puissante pour améliorer la qualité du code et réduire les erreurs. En suivant un processus structuré et en intégrant des pratiques de tests rigoureuses, les équipes de développement peuvent produire des logiciels plus fiables et maintenables.
+      </p>
+    </section>
+  </div>
+  
