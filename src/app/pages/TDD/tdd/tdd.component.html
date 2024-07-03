@@ -1,152 +1,221 @@
-<div class="presentation" @fadeIn>
-    <h1>Présentation sur le Test-Driven Development (TDD)</h1>
-  
-    <section @slideIn>
-      <h2>Résumé de la méthodologie</h2>
-      <p>Test-Driven Development (TDD) est une approche de développement où les tests unitaires sont écrits avant le code fonctionnel. Cette méthode assure une couverture de test complète et améliore la qualité du code.</p>
-    </section>
-    
-    <section @slideIn>
-      <h2>Avantages et limitations</h2>
-      <div class="table-container">
-        <h3>Avantages</h3>
-        <table>
-          <tr>
-            <td><img src="assets/check.png" alt="check" /></td>
-            <td>Amélioration de la qualité du code</td>
-          </tr>
-          <tr>
-            <td><img src="assets/check.png" alt="check" /></td>
-            <td>Réduction des erreurs</td>
-          </tr>
-          <tr>
-            <td><img src="assets/check.png" alt="check" /></td>
-            <td>Code plus maintenable</td>
-          </tr>
-          <tr>
-            <td><img src="assets/check.png" alt="check" /></td>
-            <td>Développement basé sur les tests</td>
-          </tr>
-        </table>
-      </div>
-      <div class="table-container">
-        <h3>Limitations</h3>
-        <table>
-          <tr>
-            <td><img src="assets/warning.png" alt="warning" /></td>
-            <td>Nécessite une bonne connaissance des tests unitaires</td>
-          </tr>
-          <tr>
-            <td><img src="assets/warning.png" alt="warning" /></td>
-            <td>Peut ralentir le développement initial</td>
-          </tr>
-          <tr>
-            <td><img src="assets/warning.png" alt="warning" /></td>
-            <td>Complexité accrue</td>
-          </tr>
-        </table>
-      </div>
-    </section>
-  
-    <section @slideIn>
-      <h2>Tutoriel exhaustif complet en respectant le modèle Kolb</h2>
-      
-      <h3>Why : Importance de la qualité du code et de la réduction des erreurs</h3>
+<div class="tdd-tutorial">
+  <section class="section introduction" @fadeIn>
+    <div class="content">
+      <h2>Test-Driven Development (TDD)</h2>
       <p>
-        <strong>Qualité du code :</strong> TDD assure que chaque fonctionnalité est testée avant d'être implémentée, garantissant ainsi une meilleure qualité du code.<br>
-        <strong>Réduction des erreurs :</strong> Les tests identifient rapidement les erreurs, réduisant les coûts et les efforts nécessaires pour les corriger plus tard.
+        Test-Driven Development (TDD) is a software development method where
+        tests are written before production code. Its main goal is to ensure
+        code works as expected and aids long-term maintenance. This approach
+        catches and fixes errors early, boosting overall software quality.
       </p>
-  
-      <h3>What : Processus de Test-Driven Development, phases de tests et meilleures pratiques</h3>
-      <p>
-        <strong>Processus TDD :</strong>
-        <ol>
-          <li>Écrire un test</li>
-          <li>Échouer le test</li>
-          <li>Écrire le code</li>
-          <li>Réussir le test</li>
-          <li>Refactoriser</li>
-        </ol>
-        <strong>Meilleures pratiques :</strong>
-        <ul>
-          <li>Écrire des tests simples et compréhensibles</li>
-          <li>Garder les tests indépendants les uns des autres</li>
-          <li>Réviser et mettre à jour régulièrement les tests pour qu'ils restent pertinents</li>
-        </ul>
-  
-      <h3>How : Implémentation de TDD avec exemples de tests unitaires et guides détaillés</h3>
-      
-      <p>
-        <strong>Guide détaillé :</strong>
-        <ol>
-          <li>Installation de Jest : <code>npm install --save-dev jest</code></li>
-          <li>Configuration du script de test : Ajouter <code>"test": "jest"</code> dans le fichier <code>package.json</code>.</li>
-          <li>Écrire un test : Créer un fichier de test et définir un cas de test.</li>
-          <li>Écrire le code : Implémenter la fonctionnalité pour faire passer le test.</li>
-          <li>Exécuter les tests : Utiliser la commande <code>npm test</code> pour exécuter les tests.</li>
-        </ol>
-  
-      <h3>What if : Adaptations de TDD pour différents types de projets et environnements de développement</h3>
+    </div>
+    <div class="image-container">
+      <img
+        src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lOxbAyAeEsY70E-r.png"
+        alt="Test-Driven Development (TDD) Process"
+      />
+    </div>
+  </section>
+
+  <section class="section steps" @fadeIn>
+    <div class="content">
+      <nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+        <nb-card-body>
+          <nb-stepper orientation="horizontal">
+            <nb-step [label]="labelOne">
+              <ng-template #labelOne>Red Phase</ng-template>
+              <h3>Write a test that fails.</h3>
+              <p>
+                In the Red phase, you start by writing a test that describes the desired functionality but it will fail since the functionality isn't implemented yet.
+              </p>
+              <button nbButton disabled nbStepperPrevious>prev</button>
+              <button nbButton nbStepperNext>next</button>
+            </nb-step>
+            <nb-step [label]="labelTwo">
+              <ng-template #labelTwo>Green Phase</ng-template>
+              <h3>Write code to pass the test.</h3>
+              <p>
+                In the Green phase, you write just enough code to make the test pass. This means implementing the functionality described in the test.
+              </p>
+              <button nbButton nbStepperPrevious>prev</button>
+              <button nbButton nbStepperNext>next</button>
+            </nb-step>
+            <nb-step [label]="labelThree">
+              <ng-template #labelThree>Refactor Phase</ng-template>
+              <h3>Refactor the code.</h3>
+              <p>
+                In the Refactor phase, you improve the existing code while ensuring that all tests still pass. This phase focuses on code quality and optimization.
+              </p>
+              <button nbButton nbStepperPrevious>prev</button>
+              <button nbButton nbStepperNext>next</button>
+            </nb-step>
+            <nb-step [label]="labelFour">
+              <ng-template #labelFour>Repeat</ng-template>
+              <h3>Repeat the process.</h3>
+              <p>
+                TDD is an iterative process. After refactoring, you repeat the cycle with new tests, continually improving and expanding the codebase.
+              </p>
+              <button nbButton nbStepperPrevious>prev</button>
+              <button nbButton disabled nbStepperNext>next</button>
+            </nb-step>
+          </nb-stepper>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </section>
+
+  <section class="section accordion-section" @fadeIn>
+    <div class="content">
+      <div class="accordion-container col-md-12 col-lg-6 col-xxxl-6">
+        <nb-accordion multi>
+          <!-- TDD Best Practices -->
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              TDD Best Practices
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Start with simple tests and gradually increase complexity.</li>
+                <li>Write clear and concise tests.</li>
+                <li>Ensure tests are independent and repeatable.</li>
+                <li>Refactor code and tests regularly.</li>
+                <li>Involve the whole team in writing and reviewing tests.</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+          
+          <!-- TDD Challenges -->
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Challenges of TDD
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Requires good knowledge of unit testing frameworks.</li>
+                <li>Can slow down initial development pace.</li>
+                <li>Demands time for learning and adoption.</li>
+                <li>Potential for over-engineering solutions.</li>
+                <li>Tests need maintenance and updates.</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <!-- Common TDD Tools -->
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Common TDD Tools
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Jasmine: A behavior-driven development framework for testing JavaScript code.</li>
+                <li>Karma: A test runner for JavaScript.</li>
+                <li>JUnit: A unit testing framework for Java.</li>
+                <li>RSpec: A testing tool for the Ruby programming language.</li>
+                <li>Mockito: A mocking framework for unit tests in Java.</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+          
+          <!-- Real-World Examples -->
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Real-World Examples of TDD
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <p>Example 1: Developing a calculator application with TDD.</p>
+              <p>Example 2: Implementing a user authentication system using TDD.</p>
+              <p>Example 3: Building a RESTful API with TDD principles.</p>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+        </nb-accordion>
+      </div>
+    </div>
+  </section>
+
+  <section class="section advantages" @fadeIn>
+    <div class="content">
+      <h2>Advantages and Limitations</h2>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Advantages</th>
+            <th>Limitations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Improves code quality</td>
+            <td>Requires good knowledge of unit testing</td>
+          </tr>
+          <tr>
+            <td>Reduces bugs</td>
+            <td>Can slow down initial development</td>
+          </tr>
+          <tr>
+            <td>Facilitates refactoring</td>
+            <td>Demands learning time</td>
+          </tr>
+          <tr>
+            <td>Provides living documentation</td>
+            <td>Can lead to over-engineering</td>
+          </tr>
+          <tr>
+            <td>Encourages modular design</td>
+            <td>Tests can become obsolete</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section why" @fadeIn>
+    <div class="content">
+      <h2>Why TDD?</h2>
       <ul>
-        <li>Projets agiles : Intégrer TDD dans les sprints et les itérations.</li>
-        <li>Développement mobile : Utiliser des frameworks de tests spécifiques comme XCTest pour iOS et Espresso pour Android.</li>
-        <li>Projets legacy : Introduire progressivement TDD en commençant par les nouvelles fonctionnalités ou les modules refactorisés.</li>
+        <li>Ensures code quality</li>
+        <li>Reduces bugs</li>
+        <li>Facilitates refactoring</li>
+        <li>Provides clear definitions</li>
       </ul>
-    </section>
-  
-    <section @slideIn>
-      <h2>Dashboard d'application de la méthodologie avec un Template dynamique</h2>
-      
-      <h3>Modèles pour la gestion des tests unitaires, la planification des cycles de tests et l'évaluation de la couverture de code</h3>
-      <p>
-        <strong>Étapes :</strong>
-        <ol>
-          <li>Planification des tests</li>
-          <li>Écriture des tests</li>
-          <li>Exécution des tests</li>
-          <li>Analyse des résultats</li>
-          <li>Refactorisation et amélioration continue</li>
-        </ol>
-        <strong>Itérations :</strong> Chaque cycle de développement doit inclure des phases de tests et de validation.<br>
-        <strong>Formulaires :</strong> Templates pour documenter les cas de tests, les résultats des tests, et les modifications du code.<br>
-        <strong>Tableaux de bord :</strong> Suivre la couverture de code, les statistiques de tests réussis/échoués, et les problèmes détectés.
-  
-      <h3>Modèle dynamique pour intégrer TDD</h3>
-      <p>
-        <strong>Diagrammes de flux pour intégrer TDD dans un processus agile de développement centré sur la qualité</strong>
-        <ol>
-          <li>Backlog Refinement : Identifiez les exigences et définissez les cas de tests.</li>
-          <li>Sprint Planning : Inclure les tâches de tests unitaires et de développement.</li>
-          <li>Développement :
-            <ul>
-              <li>Écrire un test</li>
-              <li>Écrire le code pour faire passer le test</li>
-              <li>Refactoriser</li>
-            </ul>
-          </li>
-          <li>Review et Retrospective : Analyser les résultats des tests et les ajustements nécessaires.</li>
-        </ol>
-    </section>
-  
-    <section @slideIn>
-      <h2>Conclusion</h2>
-      <p>
-        Le Test-Driven Development (TDD) est une méthodologie puissante pour améliorer la qualité du code et réduire les erreurs. En suivant un processus structuré et en intégrant des pratiques de tests rigoureuses, les équipes de développement peuvent produire des logiciels plus fiables et maintenables.
-      </p>
-    </section>
-    <section @slideIn>
-      <h2>Introduction au Test-Driven Development (TDD)</h2>
-      <p>
-        Le Test-Driven Development (TDD) est une méthodologie de développement logiciel où les tests sont écrits avant le code de production. L'objectif principal de TDD est d'assurer que le code fonctionne comme prévu et de faciliter la maintenance à long terme. Cette approche permet de détecter et de corriger les erreurs dès les premières phases de développement, améliorant ainsi la qualité globale du logiciel.
-      </p>
-      <p>
-        TDD suit un cycle court et répétitif connu sous le nom de cycle "Red-Green-Refactor" :
-        <ul>
-          <li><strong>Red :</strong> Écrire un test qui échoue pour une nouvelle fonctionnalité ou une modification du code existant.</li>
-          <li><strong>Green :</strong> Écrire le code minimal nécessaire pour faire passer le test.</li>
-          <li><strong>Refactor :</strong> Améliorer le code tout en s'assurant que les tests continuent de passer.</li>
-        </ul>
-      </p>
-    </section>
-  </div>
-  
+    </div>
+    <div class="image-container"></div>
+  </section>
+
+  <section class="section what" @slideIn>
+    <div class="content">
+      <h2>What is TDD?</h2>
+      <ul>
+        <li>Red: Write a test that fails</li>
+        <li>Green: Write code to pass the test</li>
+        <li>Refactor: Improve the code</li>
+      </ul>
+    </div>
+    <div class="image-container"></div>
+  </section>
+
+  <section class="section how" @zoomIn>
+    <div class="content">
+      <h2>How to Implement TDD?</h2>
+      <ol>
+        <li>Set up Jasmine and Karma for testing</li>
+        <li>Write a failing test</li>
+        <li>Implement the feature</li>
+        <li>Refactor the code</li>
+      </ol>
+    </div>
+    <div class="image-container"></div>
+  </section>
+
+  <section class="section what-if" @fadeInUp>
+    <div class="content">
+      <h2>What-If Scenarios in TDD?</h2>
+      <ul>
+        <li>What if the test fails? - Debug the issue.</li>
+        <li>What if the code doesn’t pass? - Refactor the code.</li>
+        <li>What if the requirements change? - Update tests and code.</li>
+      </ul>
+    </div>
+    <div class="image-container"></div>
+  </section>
+</div>
+<router-outlet></router-outlet>
