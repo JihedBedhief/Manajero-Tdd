@@ -1,0 +1,99 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+
+  .item-container {
+    flex: 1 1 300px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    h1 {
+      background-color: #407bff;
+      color: #ffffff;
+      margin: 0;
+      padding: 10px 20px;
+      font-size: 1.5em;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .item-name {
+        flex-grow: 1;
+        margin-right: 10px;
+        color: #333;
+        font-size: 1.1em;
+      }
+
+      .item-actions {
+        display: flex;
+        gap: 5px;
+
+        .btn {
+          padding: 5px 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &.btn-update {
+            background-color: #28a745;
+            color: #fff;
+
+            &:hover {
+              background-color: #218838;
+            }
+          }
+
+          &.btn-delete {
+            background-color: #dc3545;
+            color: #fff;
+
+            &:hover {
+              background-color: #c82333;
+            }
+          }
+        }
+      }
+    }
+
+    .item-add {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+
+      .btn-add {
+        padding: 10px 20px;
+        background-color: #407bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+}

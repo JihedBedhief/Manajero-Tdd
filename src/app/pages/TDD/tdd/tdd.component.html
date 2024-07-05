@@ -1,12 +1,14 @@
 <div class="tdd-tutorial">
+  <div class="top-navigation">
+    <button class="btn btn-navigate" [routerLink]="['/pages/agile/tdd/dynamic']">
+      <i class="fas fa-arrow-right"></i> Add other item
+    </button>
+  </div>
   <section class="section introduction" @fadeIn>
     <div class="content">
       <h2>Test-Driven Development (TDD)</h2>
-      <p>
-        Test-Driven Development (TDD) is a software development method where
-        tests are written before production code. Its main goal is to ensure
-        code works as expected and aids long-term maintenance. This approach
-        catches and fixes errors early, boosting overall software quality.
+      <p  *ngFor="let item of intro ">
+        {{ item.description }}
       </p>
     </div>
     <div class="image-container">
@@ -135,47 +137,46 @@
   <section class="section advantages" @fadeIn>
     <div class="content">
       <h2>Advantages and Limitations</h2>
-      <table class="styled-table">
-        <thead>
-          <tr>
-            <th>Advantages</th>
-            <th>Limitations</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Improves code quality</td>
-            <td>Requires good knowledge of unit testing</td>
-          </tr>
-          <tr>
-            <td>Reduces bugs</td>
-            <td>Can slow down initial development</td>
-          </tr>
-          <tr>
-            <td>Facilitates refactoring</td>
-            <td>Demands learning time</td>
-          </tr>
-          <tr>
-            <td>Provides living documentation</td>
-            <td>Can lead to over-engineering</td>
-          </tr>
-          <tr>
-            <td>Encourages modular design</td>
-            <td>Tests can become obsolete</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="tables-container">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Advantages</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of avantage">
+              <td>{{ item.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Limitations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of limitation">
+              <td>{{ item.description }}</td>
+            
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
+  
+  
 
   <section class="section why" @fadeIn>
     <div class="content">
       <h2>Why TDD?</h2>
-      <ul>
-        <li>Ensures code quality</li>
-        <li>Reduces bugs</li>
-        <li>Facilitates refactoring</li>
-        <li>Provides clear definitions</li>
+      <ul *ngFor="let item of why">
+        <li>{{ item.description }}</li>
+     
       </ul>
     </div>
     <div class="image-container"></div>
@@ -184,10 +185,9 @@
   <section class="section what" @slideIn>
     <div class="content">
       <h2>What is TDD?</h2>
-      <ul>
-        <li>Red: Write a test that fails</li>
-        <li>Green: Write code to pass the test</li>
-        <li>Refactor: Improve the code</li>
+      <ul *ngFor="let item of what">
+        <li>{{ item.description }}</li>
+        
       </ul>
     </div>
     <div class="image-container"></div>
@@ -196,11 +196,9 @@
   <section class="section how" @zoomIn>
     <div class="content">
       <h2>How to Implement TDD?</h2>
-      <ol>
-        <li>Set up Jasmine and Karma for testing</li>
-        <li>Write a failing test</li>
-        <li>Implement the feature</li>
-        <li>Refactor the code</li>
+      <ol *ngFor="let item of how">
+        <li>{{ item.description }}</li>
+       
       </ol>
     </div>
     <div class="image-container"></div>
@@ -209,10 +207,9 @@
   <section class="section what-if" @fadeInUp>
     <div class="content">
       <h2>What-If Scenarios in TDD?</h2>
-      <ul>
-        <li>What if the test fails? - Debug the issue.</li>
-        <li>What if the code doesn’t pass? - Refactor the code.</li>
-        <li>What if the requirements change? - Update tests and code.</li>
+      <ul *ngFor="let item of whatif">
+        <li>{{ item.description }}</li>
+     
       </ul>
     </div>
     <div class="image-container"></div>

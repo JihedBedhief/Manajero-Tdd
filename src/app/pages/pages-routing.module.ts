@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { TDDComponent } from './TDD/tdd/tdd.component';
+import { ItemListComponent } from './dynamic/item-list/item-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -77,6 +78,10 @@ const routes: Routes = [{
     {
       path: 'agile/tdd',
       component: TDDComponent,
+    },
+    {
+      path: 'agile/tdd/dynamic',
+      component: ItemListComponent,
     },
     {
       path: '**',

@@ -1,0 +1,93 @@
+<div class="item-list">
+  <div class="item-container">
+    <h1>Introduction</h1>
+    <div class="item" *ngFor="let item of intro">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateIntro(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteIntro(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addIntro()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>Advantage</h1>
+    <div class="item" *ngFor="let item of avantage">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateAvantage(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteAvantage(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addAvantage()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>Limitation</h1>
+    <div class="item" *ngFor="let item of limitation">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateLimitation(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteLimitation(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addLimitation()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>What</h1>
+    <div class="item" *ngFor="let item of what">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateWhat(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteWhat(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addWhat()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>How</h1>
+    <div class="item" *ngFor="let item of how">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateHow(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteHow(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addHow()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>Why</h1>
+    <div class="item" *ngFor="let item of why">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateWhy(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteWhy(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addWhy()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+  <div class="item-container">
+    <h1>WhatIf</h1>
+    <div class="item" *ngFor="let item of whatif">
+      <span class="item-name">{{ item.description }}</span>
+      <div class="item-actions">
+        <button class="btn btn-update" (click)="updateWhatIf(item.id)"><i class="fas fa-edit"></i> </button>
+        <button class="btn btn-delete" (click)="deleteWhatIf(item.id)"><i class="fas fa-trash"></i> </button>
+      </div>
+    </div>
+    <div class="item-add">
+      <button class="btn btn-add" (click)="addWhatIf()"><i class="fas fa-plus"></i> </button>
+    </div>
+  </div>
+</div>

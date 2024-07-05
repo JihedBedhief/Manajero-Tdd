@@ -10,6 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { TDDComponent } from './TDD/tdd/tdd.component';
 import { LayoutRoutingModule } from './layout/layout-routing.module';
 import { StepperComponent } from './TDD/tdd/stepper/stepper.component';
+import { ItemListComponent } from './dynamic/item-list/item-list.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { StepperComponent } from './TDD/tdd/stepper/stepper.component';
     PagesComponent,
     TDDComponent,
     StepperComponent,
+    ItemListComponent,
 
   ],
 })
