@@ -18,7 +18,6 @@ export class LimitationService {
   }
   addLimitation(limitationdto:any):Observable<any>{
     return this.http.post(BASE_URL+"api/limitation",limitationdto);
-    
   }
 
   deleteLimitationById(idLim: any):Observable<any>{

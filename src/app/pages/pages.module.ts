@@ -18,6 +18,7 @@ import { UpdateSectionComponent } from './dynamic/UpdateSection/update-section/u
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
 import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
+import { ProjectComponent } from './project/project.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component'
     AddAccordionComponent,
     AupdateAccordionComponent,
     AddStepComponent,
+    ProjectComponent,
 
   ],
 })
