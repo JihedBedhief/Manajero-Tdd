@@ -7,6 +7,9 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { TDDComponent } from './TDD/tdd/tdd.component';
 import { ItemListComponent } from './dynamic/item-list/item-list.component';
+import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
+import { AccordionComponent } from './layout/accordion/accordion.component';
+import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 
 const routes: Routes = [{
   path: '',
@@ -82,6 +85,10 @@ const routes: Routes = [{
     {
       path: 'agile/tdd/dynamic',
       component: ItemListComponent,
+    },
+    {
+      path: 'agile/tdd/addaccordion',
+      component: AddAccordionComponent,
     },
     {
       path: '**',

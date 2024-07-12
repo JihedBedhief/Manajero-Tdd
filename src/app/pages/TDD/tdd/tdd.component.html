@@ -4,137 +4,72 @@
       <i class="fas fa-arrow-right"></i> Add other item
     </button>
   </div>
-  <section class="section introduction" @fadeIn>
+  <section class="section introduction" @fadeIn *ngFor="let item of section">
     <div class="content">
-      <h2>Test-Driven Development (TDD)</h2>
-      <p  *ngFor="let item of intro ">
-        {{ item.description }}
-      </p>
+      <h2>{{ item.title }}</h2>
+      <ng-container *ngIf="shouldDisplayInPre(item.title); else paragraph">
+        <pre>{{ item.description }}</pre>
+      </ng-container>
+      <ng-template #paragraph>
+        <p>{{ item.description }}</p>
+      </ng-template>
     </div>
     <div class="image-container">
-      <img
-        src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lOxbAyAeEsY70E-r.png"
-        alt="Test-Driven Development (TDD) Process"
-      />
+      <img [src]="item.processedImg" alt="Test-Driven Development (TDD) Process" />
     </div>
   </section>
+  
 
-  <section class="section steps" @fadeIn>
+  <section class="section steps" >
     <div class="content">
       <nb-card class="col-md-12 col-lg-12 col-xxxl-12">
         <nb-card-body>
           <nb-stepper orientation="horizontal">
-            <nb-step [label]="labelOne">
-              <ng-template #labelOne>Red Phase</ng-template>
-              <h3>Write a test that fails.</h3>
-              <p>
-                In the Red phase, you start by writing a test that describes the desired functionality but it will fail since the functionality isn't implemented yet.
-              </p>
-              <button nbButton disabled nbStepperPrevious>prev</button>
-              <button nbButton nbStepperNext>next</button>
-            </nb-step>
-            <nb-step [label]="labelTwo">
-              <ng-template #labelTwo>Green Phase</ng-template>
-              <h3>Write code to pass the test.</h3>
-              <p>
-                In the Green phase, you write just enough code to make the test pass. This means implementing the functionality described in the test.
-              </p>
-              <button nbButton nbStepperPrevious>prev</button>
-              <button nbButton nbStepperNext>next</button>
-            </nb-step>
-            <nb-step [label]="labelThree">
-              <ng-template #labelThree>Refactor Phase</ng-template>
-              <h3>Refactor the code.</h3>
-              <p>
-                In the Refactor phase, you improve the existing code while ensuring that all tests still pass. This phase focuses on code quality and optimization.
-              </p>
-              <button nbButton nbStepperPrevious>prev</button>
-              <button nbButton nbStepperNext>next</button>
-            </nb-step>
-            <nb-step [label]="labelFour">
-              <ng-template #labelFour>Repeat</ng-template>
-              <h3>Repeat the process.</h3>
-              <p>
-                TDD is an iterative process. After refactoring, you repeat the cycle with new tests, continually improving and expanding the codebase.
-              </p>
-              <button nbButton nbStepperPrevious>prev</button>
-              <button nbButton disabled nbStepperNext>next</button>
+            <nb-step *ngFor="let step of steps; let i = index" [label]="step.label">
+              <ng-template #label>{{ step.label }}</ng-template>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+              <button nbButton [disabled]="i === 0" nbStepperPrevious>prev</button>
+              <button nbButton [disabled]="i === steps.length - 1" nbStepperNext>next</button>
             </nb-step>
           </nb-stepper>
         </nb-card-body>
       </nb-card>
     </div>
   </section>
+  <section class="section tdd-process-image">
+    <div class="content">
+      <h2>Test-Driven Development (TDD) Process</h2>
+      <div class="image-container">
+        <img src="/assets/images/gg.png" alt="Test-Driven Development (TDD) Process" />
+      </div>
+    </div>
+  </section>
 
-  <section class="section accordion-section" @fadeIn>
+  <section class="section accordion-section" >
     <div class="content">
       <div class="accordion-container col-md-12 col-lg-6 col-xxxl-6">
         <nb-accordion multi>
           <!-- TDD Best Practices -->
-          <nb-accordion-item>
+          <nb-accordion-item *ngFor="let item of accordionItems">
             <nb-accordion-item-header>
-              TDD Best Practices
+              {{ item.title }}
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-              <ul>
-                <li>Start with simple tests and gradually increase complexity.</li>
-                <li>Write clear and concise tests.</li>
-                <li>Ensure tests are independent and repeatable.</li>
-                <li>Refactor code and tests regularly.</li>
-                <li>Involve the whole team in writing and reviewing tests.</li>
-              </ul>
-            </nb-accordion-item-body>
-          </nb-accordion-item>
-          
-          <!-- TDD Challenges -->
-          <nb-accordion-item>
-            <nb-accordion-item-header>
-              Challenges of TDD
-            </nb-accordion-item-header>
-            <nb-accordion-item-body>
-              <ul>
-                <li>Requires good knowledge of unit testing frameworks.</li>
-                <li>Can slow down initial development pace.</li>
-                <li>Demands time for learning and adoption.</li>
-                <li>Potential for over-engineering solutions.</li>
-                <li>Tests need maintenance and updates.</li>
-              </ul>
-            </nb-accordion-item-body>
-          </nb-accordion-item>
+              <ul *ngFor="let content of item.content">
+                <li>{{ content }}</li>
 
-          <!-- Common TDD Tools -->
-          <nb-accordion-item>
-            <nb-accordion-item-header>
-              Common TDD Tools
-            </nb-accordion-item-header>
-            <nb-accordion-item-body>
-              <ul>
-                <li>Jasmine: A behavior-driven development framework for testing JavaScript code.</li>
-                <li>Karma: A test runner for JavaScript.</li>
-                <li>JUnit: A unit testing framework for Java.</li>
-                <li>RSpec: A testing tool for the Ruby programming language.</li>
-                <li>Mockito: A mocking framework for unit tests in Java.</li>
               </ul>
             </nb-accordion-item-body>
           </nb-accordion-item>
-          
-          <!-- Real-World Examples -->
-          <nb-accordion-item>
-            <nb-accordion-item-header>
-              Real-World Examples of TDD
-            </nb-accordion-item-header>
-            <nb-accordion-item-body>
-              <p>Example 1: Developing a calculator application with TDD.</p>
-              <p>Example 2: Implementing a user authentication system using TDD.</p>
-              <p>Example 3: Building a RESTful API with TDD principles.</p>
-            </nb-accordion-item-body>
-          </nb-accordion-item>
+ 
+     
         </nb-accordion>
       </div>
     </div>
   </section>
 
-  <section class="section advantages" @fadeIn>
+  <section class="section advantages" >
     <div class="content">
       <h2>Advantages and Limitations</h2>
       <div class="tables-container">
@@ -171,65 +106,5 @@
   
   
 
-  <section class="section why" @fadeIn>
-    <div class="content">
-      <h2>Why TDD?</h2>
-      <ul *ngFor="let item of why">
-        <li>{{ item.description }}</li>
-     
-      </ul>
-    </div>
-    <div class="image-container">
-      <img
-      src="assets/images/svg1.PNG"
-    />
-      
-    </div>
-  </section>
-
-  <section class="section what" @slideIn>
-    <div class="content">
-      <h2>What is TDD?</h2>
-      <ul *ngFor="let item of what">
-        <li>{{ item.description }}</li>
-        
-      </ul>
-    </div>
-    <div class="image-container">
-      <img
-      src="assets/images/svg2.PNG"
-    />
-    </div>
-  </section>
-
-  <section class="section how" @zoomIn>
-    <div class="content">
-      <h2>How to Implement TDD?</h2>
-      <ol *ngFor="let item of how">
-        <li>{{ item.description }}</li>
-       
-      </ol>
-    </div>
-    <div class="image-container">
-      <img
-      src="assets/images/svg3.PNG"
-    />
-    </div>
-  </section>
-
-  <section class="section what-if" @fadeInUp>
-    <div class="content">
-      <h2>What-If Scenarios in TDD?</h2>
-      <ul *ngFor="let item of whatif">
-        <li>{{ item.description }}</li>
-     
-      </ul>
-    </div>
-    <div class="image-container">
-      <img
-      src="/assets/images/svg4.PNG"
-    />
-    </div>
-  </section>
 </div>
 <router-outlet></router-outlet>

@@ -11,6 +11,14 @@ import { TDDComponent } from './TDD/tdd/tdd.component';
 import { LayoutRoutingModule } from './layout/layout-routing.module';
 import { StepperComponent } from './TDD/tdd/stepper/stepper.component';
 import { ItemListComponent } from './dynamic/item-list/item-list.component';
+import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from "@angular/material/dialog";
+import { UpdateSectionComponent } from './dynamic/UpdateSection/update-section/update-section.component';
+import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
+import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
+import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
+
 
 @NgModule({
   imports: [
@@ -29,13 +37,21 @@ import { ItemListComponent } from './dynamic/item-list/item-list.component';
     NbListModule,
     NbAccordionModule,
     NbUserModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    ReactiveFormsModule,
+    MatDialogModule
+    
   ],
   declarations: [
     PagesComponent,
     TDDComponent,
     StepperComponent,
     ItemListComponent,
+    AddSectionComponent,
+    UpdateSectionComponent,
+    AddAccordionComponent,
+    AupdateAccordionComponent,
+    AddStepComponent,
 
   ],
 })

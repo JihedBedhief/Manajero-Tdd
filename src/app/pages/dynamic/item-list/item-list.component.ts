@@ -6,6 +6,21 @@ import { WhatIfService } from '../../../services/whatIf/what-if.service';
 import { IntroService } from '../../../services/intro/intro.service';
 import { AvantageService } from '../../../services/avantage/avantage.service';
 import { LimitationService } from '../../../services/limitation/limitation.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddSectionComponent } from '../AddSection/add-section/add-section.component';
+import { SectionService } from '../../../services/Section/section.service';
+import { UpdateSectionComponent } from '../UpdateSection/update-section/update-section.component';
+import { AccordionService } from '../../../services/Accordion/accordion.service';
+import { AddAccordionComponent } from '../AddAccordion/add-accordion/add-accordion.component';
+import { AupdateAccordionComponent } from '../UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
+import { StepService } from '../../../services/step/step.service';
+import { AddStepComponent } from '../AddStep/add-step/add-step.component';
+
+interface AccordionItem {
+  id?: number;
+  title: string;
+  content: string[];
+}
 
 @Component({
   selector: 'app-item-list',
@@ -13,244 +28,169 @@ import { LimitationService } from '../../../services/limitation/limitation.servi
   styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
-  what : any [] = [];
-  how : any [] = [];
-  why : any [] = [];
-  whatif : any [] = [];
-  intro : any [] = [];
-  avantage : any [] = [];
-  limitation : any [] = [];
+ 
+  avantage: any[] = [];
+  limitation: any[] = [];
+  section: any[] = [];
+  accordionItems: any[] = [];
+  steps: any[] = [];
 
+  constructor(
+    private _av: AvantageService,
+    private _lim: LimitationService,
+    private _dialogue: MatDialog,
+    private _section: SectionService,
+    private _accordion: AccordionService,
+    private _step :StepService
 
-  constructor(private _What : WhatService, private _How : HowService,private _Why:WhyService,private _WahtIf: WhatIfService,private _intro : IntroService,private _av : AvantageService,private _lim: LimitationService,){}
+  ) {}
 
   ngOnInit() {
-    this.getAllWhat();
-    this.getAllHow();
-    this.getAllWhy();
-    this.getAllWhatIf();
-    this.getAllIntro();
     this.getAllavantage();
     this.getAllLimitation();
+    this.getAllSection();
+    this.loadAccordionItems();
+    this.getAllstep();
   }
 
-  getAllWhat(){
-    this._What.getWhat().subscribe(res =>{
-      console.log(res);
-      this.what = res; 
-      console.log(this.what);
-    })
+  refresh() {
+    location.reload();
   }
-  getAllHow(){
-    this._How.getHow().subscribe(res =>{
-      this.how = res; 
 
-    })
+  openAddSection() {
+    this._dialogue.open(AddSectionComponent);
   }
-  getAllWhy(){
-    this._Why.getWhy().subscribe(res =>{
-      this.why = res; 
-    })
+  openAddStep() {
+    this._dialogue.open(AddStepComponent);
   }
-  getAllWhatIf(){
-    this._WahtIf.getWhatIf().subscribe(res =>{
-      this.whatif = res; 
-    })
+  openAddAccordion() {
+    this._dialogue.open(AddAccordionComponent);
   }
-  getAllIntro(){
-    this._intro.getIntro().subscribe(res =>{
-      console.log(res);
-      this.intro = res; 
-      console.log(this.intro);
 
-    })
+  openUpdate(id: any) {
+    this._dialogue.open(UpdateSectionComponent, {
+      data: { id: id }
+    });
   }
-  getAllavantage(){
-    this._av.getAvantage().subscribe(res =>{
-      this.avantage = res; 
-    })
-  }
-  getAllLimitation(){
-    this._lim.getLimitation().subscribe(res =>{
-      console.log(res);
-      this.limitation = res; 
-      console.log(this.limitation);
 
-    })
+  openUpdateAccordion(item: AccordionItem) {
+    this._dialogue.open(AupdateAccordionComponent, {
+      data: item
+    });
   }
-  deleteWhat(id: number) {
-    this._What.deleteWhatById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllWhat();
-      }
-    })
+
+  getAllstep() {
+    this._step.getStep().subscribe(data => {
+      this.steps = data;
+    });
   }
-  deleteHow(id: number) {
-    this._How.deleteHowById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllHow();
-      }
-    })
+  loadAccordionItems(): void {
+    this._accordion.getAccordion().subscribe(data => {
+      this.accordionItems = data;
+    });
   }
-  deleteWhy(id: number) {
-    this._Why.deleteWhyById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllWhy();
-      }
-    })
+
+  getAllSection() {
+    this._section.getSection().subscribe(res => {
+      res.forEach((element: { processedImg: string; byteImg: string; }) => {
+        element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
+        this.section.push(element);
+      });
+    });
   }
-  deleteWhatIf(id: number) {
-    this._WahtIf.deleteWhatIfById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllWhatIf();
-      }
-    })
+
+  getAllavantage() {
+    this._av.getAvantage().subscribe(res => {
+      this.avantage = res;
+    });
   }
-  deleteIntro(id: number) {
-    this._intro.deleteIntroById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllIntro();
-      }
-    })
+
+  getAllLimitation() {
+    this._lim.getLimitation().subscribe(res => {
+      this.limitation = res;
+    });
   }
-  deleteAvanatage(id: number) {
-    this._av.deleteAvantageById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllavantage();
-      }
-    })
+
+  confirmDeleteAvantage(id: number) {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      this.deleteAvantage(id);
+    }
   }
+
+  deleteAvantage(id: number) {
+    this._av.deleteAvantageById(id).subscribe(res => {
+      this.getAllavantage();
+    });
+  }
+
+  confirmDeleteLimitation(id: number) {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      this.deleteLimitation(id);
+    }
+  }
+
   deleteLimitation(id: number) {
-    this._lim.deleteLimitationById(id).subscribe(res=>{
-      if(res && res.body){
-  
-      }else{
-               this.getAllLimitation();
-      }
-    })
+    this._lim.deleteLimitationById(id).subscribe(res => {
+      this.getAllLimitation();
+    });
   }
 
-  updateWhat(id: number) {
-    const itemName = prompt('Enter new name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._What.updateWhat(id,newItem).subscribe(response => {
-        this.getAllWhat();
-      });
+  confirmDeleteStep(id: number) {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      this.deleteStep(id);
     }
   }
-  updateHow(id: number) {
-    const itemName = prompt('Enter new name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._How.updateHow(id,newItem).subscribe(response => {
-        this.getAllHow();
-      });
+
+  deleteStep(id: number) {
+    this._step.deleteStepById(id).subscribe(res => {
+      this.refresh();
+    });
+  }
+
+  confirmDeleteSection(id: number) {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      this.deleteSection(id);
     }
   }
-  updateWhy(id: number) {
-    const itemName = prompt('Enter new name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._Why.updateWhy(id,newItem).subscribe(response => {
-        this.getAllWhy();
-      });
+
+  deleteSection(id: number) {
+    this._section.deleteSectionById(id).subscribe(res => {
+      this.refresh();
+    });
+  }
+
+  confirmDeleteAccordion(id: number) {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      this.deleteAccordion(id);
     }
   }
-  updateWhatIf(id: number) {
-    const itemName = prompt('Enter new name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._WahtIf.updateWhatIf(id,newItem).subscribe(response => {
-        this.getAllWhatIf();
-      });
-    }
+
+  deleteAccordion(id: number) {
+    this._accordion.deleteAccordionById(id).subscribe(res => {
+      this.refresh();
+    });
   }
-  updateIntro(id: number) {
-    const itemName = prompt('Enter new name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._intro.updateIntro(id,newItem).subscribe(response => {
-        this.getAllIntro();
-      });
-    }
-  }
+
   updateAvantage(id: number) {
     const itemName = prompt('Enter new name:');
     if (itemName) {
       const newItem = { description: itemName };
-      this._av.updateAvantage(id,newItem).subscribe(response => {
+      this._av.updateAvantage(id, newItem).subscribe(response => {
         this.getAllavantage();
       });
     }
   }
+
   updateLimitation(id: number) {
     const itemName = prompt('Enter new name:');
     if (itemName) {
       const newItem = { description: itemName };
-      this._lim.updateLimitation(id,newItem).subscribe(response => {
+      this._lim.updateLimitation(id, newItem).subscribe(response => {
         this.getAllLimitation();
       });
     }
   }
 
-  addWhat() {
-    const itemName = prompt('Enter new item name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._What.addWhat(newItem).subscribe(response => {
-        this.getAllWhat();
-      });
-    }
-  }
-  addHow() {
-    const itemName = prompt('Enter new item name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._How.addHow(newItem).subscribe(response => {
-        this.getAllHow();
-      });
-    }
-  }
-  addWhy() {
-    const itemName = prompt('Enter new item name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._Why.addWhy(newItem).subscribe(response => {
-        this.getAllWhy();
-      });
-    }
-  }
-  addWhatIf() {
-    const itemName = prompt('Enter new item name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._WahtIf.addWhatIf(newItem).subscribe(response => {
-        this.getAllWhatIf();
-      });
-    }
-  }
-  addIntro() {
-    const itemName = prompt('Enter new item name:');
-    if (itemName) {
-      const newItem = { description: itemName };
-      this._intro.addIntro(newItem).subscribe(response => {
-        this.getAllIntro();
-      });
-    }
-  }
   addLimitation() {
     const itemName = prompt('Enter new item name:');
     if (itemName) {
@@ -260,6 +200,7 @@ export class ItemListComponent implements OnInit {
       });
     }
   }
+
   addAvantage() {
     const itemName = prompt('Enter new item name:');
     if (itemName) {
@@ -269,5 +210,4 @@ export class ItemListComponent implements OnInit {
       });
     }
   }
-
 }

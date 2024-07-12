@@ -1,0 +1,42 @@
+<div class="container">
+    <h3 class="h3 mb-3 fw-normal">Add Step</h3>
+    <form [formGroup]="stepForm" (ngSubmit)="addSection()">
+      <div id="form">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="label" type="text" placeholder="" class="form-control">
+              <label for="label">Label</label>
+              <mat-error *ngIf="stepForm.get('label')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="title" type="text" placeholder="" class="form-control">
+              <label for="title">Title</label>
+              <mat-error *ngIf="stepForm.get('title')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="description" type="text" placeholder="" class="form-control">
+              <label for="description">Description</label>
+              <mat-error *ngIf="stepForm.get('description')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit">Add Step</button>
+      </div>
+    </form>
+  </div>
+  

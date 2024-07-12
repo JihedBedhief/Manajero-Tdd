@@ -13,6 +13,9 @@ import { LimitationService } from "../../../services/limitation/limitation.servi
 import { WhatService } from "../../../services/what/what.service";
 import { WhatIfService } from "../../../services/whatIf/what-if.service";
 import { WhyService } from "../../../services/why/why.service";
+import { AccordionService } from "../../../services/Accordion/accordion.service";
+import { SectionService } from "../../../services/Section/section.service";
+import { StepService } from "../../../services/step/step.service";
 
 
 @Component({
@@ -48,57 +51,54 @@ import { WhyService } from "../../../services/why/why.service";
 })
 export class TDDComponent {
 
-  what : any [] = [];
-  how : any [] = [];
-  why : any [] = [];
-  whatif : any [] = [];
-  intro : any [] = [];
+ 
   avantage : any [] = [];
   limitation : any [] = [];
+  section : any [] = [];
+  accordionItems: any[] = [];
+  steps: any[] = [];
 
-  constructor(private _What : WhatService, private _How : HowService,private _Why:WhyService,private _WahtIf: WhatIfService,private _intro : IntroService,private _av : AvantageService,private _lim: LimitationService,){}
+
+  constructor(private _av : AvantageService,private _lim: LimitationService,private _section :SectionService,private _accordion: AccordionService,private _step :StepService
+  ){}
 
   ngOnInit() {
-    this.getAllWhat();
-    this.getAllHow();
-    this.getAllWhy();
-    this.getAllWhatIf();
-    this.getAllIntro();
+   
     this.getAllavantage();
     this.getAllLimitation();
+    this.getAllSection();
+    this.loadAccordionItems();
+    this.getAllstep();
+
+  }
+  shouldDisplayInPre(title: string): boolean {
+    const keywords = ['why', 'how', 'what', 'What-If'];
+    return keywords.some(keyword => title.toLowerCase().includes(keyword.toLowerCase()));
   }
 
-  getAllWhat(){
-    this._What.getWhat().subscribe(res =>{
-      console.log(res);
-      this.what = res; 
-      console.log(this.what);
-    })
-  }
-  getAllHow(){
-    this._How.getHow().subscribe(res =>{
-      this.how = res; 
 
+  loadAccordionItems(): void {
+    this._accordion.getAccordion().subscribe(data => {
+      this.accordionItems = data;
+    });
+  }
+ 
+  getAllstep() {
+    this._step.getStep().subscribe(data => {
+      this.steps = data;
+    });
+  }
+  getAllSection(){
+    this._section.getSection().subscribe(res =>{
+      res.forEach((element: { processedImg: string; byteImg: string; }) => {
+        element.processedImg = 'data:image/jpeg;base64,'+element.byteImg;
+        this.section.push(element);
+        console.log(element);
+        
+      });
     })
   }
-  getAllWhy(){
-    this._Why.getWhy().subscribe(res =>{
-      this.why = res; 
-    })
-  }
-  getAllWhatIf(){
-    this._WahtIf.getWhatIf().subscribe(res =>{
-      this.whatif = res; 
-    })
-  }
-  getAllIntro(){
-    this._intro.getIntro().subscribe(res =>{
-      console.log(res);
-      this.intro = res; 
-      console.log(this.intro);
-
-    })
-  }
+ 
   getAllavantage(){
     this._av.getAvantage().subscribe(res =>{
       this.avantage = res; 
