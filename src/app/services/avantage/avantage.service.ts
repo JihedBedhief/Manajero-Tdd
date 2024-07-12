@@ -26,4 +26,5 @@ export class AvantageService {
   }
   updateAvantage(idAvantage: number, avantagedto : any):Observable<any>{
     return this.http.put(BASE_URL+`api/avantage/${idAvantage}`,avantagedto);
-  }}
+  }
+}

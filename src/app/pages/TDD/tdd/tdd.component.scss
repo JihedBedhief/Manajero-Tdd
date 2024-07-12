@@ -3,6 +3,7 @@
   font-family: Arial, sans-serif;
   background-color: #f0f8ff;
 }
+
 .section {
   display: flex;
   align-items: center;
@@ -13,34 +14,42 @@
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s, opacity 0.5s;
+  flex-wrap: wrap;
 }
+
 .image-container {
   flex: 0 0 200px;
   margin-left: 20px;
 }
+
 .image-container img {
   max-width: 100%;
   border-radius: 8px;
 }
+
 .content {
   flex: 1;
 }
+
 h2 {
   font-size: 2em;
   margin-bottom: 15px;
   text-align: center;
   color: #333;
 }
+
 ul,
 ol {
   list-style: inside disc;
   padding-left: 20px;
 }
+
 li {
   margin: 10px 0;
   font-size: 1.2em;
   color: #555;
 }
+
 .section .content {
   display: flex;
   flex-direction: column;
@@ -85,6 +94,25 @@ li {
 }
 
 @media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-container {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    width: 100%;
+    align-items: center;
+  }
+
+  .button-container {
+    justify-content: center;
+  }
+
   .tables-container {
     flex-direction: column;
     align-items: center;
@@ -92,5 +120,63 @@ li {
 
   .styled-table {
     min-width: 100%;
+  }
+  .nb-stepper[orientation="horizontal"] {
+    flex-direction: column;
+  }
+
+  .nb-step h3 {
+    font-size: 1.2em;
+  }
+
+  .nb-step p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 375px) {
+  .section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-container {
+    order: 2;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .content {
+    order: 1;
+    width: 100%;
+    align-items: center;
+  }
+  pre{
+    font-size: 0.6em;
+
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  li {
+    font-size: 1em;
+  }
+
+  .styled-table {
+    font-size: 16px;
+  }
+  .nb-step h3 {
+    font-size: 1em;
+  }
+
+  .nb-step p {
+    font-size: 0.9em;
+  }
+
+  .nb-step button {
+    font-size: 0.8em;
   }
 }

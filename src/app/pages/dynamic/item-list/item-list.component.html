@@ -1,24 +1,73 @@
-<div class="item-list">
-  <div class="item-container">
-    <h1>Introduction</h1>
-    <div class="item" *ngFor="let item of intro">
-      <span class="item-name">{{ item.description }}</span>
-      <div class="item-actions">
-        <button class="btn btn-update" (click)="updateIntro(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteIntro(item.id)"><i class="fas fa-trash"></i> </button>
-      </div>
-    </div>
-    <div class="item-add">
-      <button class="btn btn-add" (click)="addIntro()"><i class="fas fa-plus"></i> </button>
+<button class="btn btn-update"  (click)="openAddSection()" ><i class="fas fa-edit"></i> Add Section</button>
+<button class="btn btn-update"  (click)="openAddAccordion()" ><i class="fas fa-edit"></i> Add Accordion</button>
+<button class="btn btn-update"  (click)="openAddStep()" ><i class="fas fa-edit"></i> Add Stepper Content</button>
+
+<section class="section introduction" *ngFor="let item of section">
+  <div class="content">
+    <h2>{{ item.title }}</h2>
+    <p class="description">{{ item.description }}</p>
+    <div class="button-container">
+      <button class="btn update-btn" (click)="openUpdate(item.id)"><i class="fas fa-edit"></i> </button>
+      <button class="btn delete-btn" (click)="confirmDeleteSection(item.id)"><i class="fas fa-trash"></i></button>
     </div>
   </div>
+  <div class="image-container">
+    <img [src]="item.processedImg" alt="Image Description" />
+  </div>
+</section>
+
+<section class="section accordion-section" @fadeIn>
+  <div class="content">
+    <div class="accordion-container col-md-12 col-lg-6 col-xxxl-6">
+      <nb-accordion multi>
+        <!-- TDD Best Practices -->
+        <nb-accordion-item *ngFor="let item of accordionItems">
+          <nb-accordion-item-header>
+            {{ item.title }}
+            <div class="button-group">
+              <button class="btn update-btn"  (click)="openUpdateAccordion(item)" ><i class="fas fa-edit"></i> </button>
+              <button class="btn delete-btn" (click)="confirmDeleteAccordion(item.id)"><i class="fas fa-trash"></i></button>
+            </div>
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <ul>
+              <li *ngFor="let content of item.content">{{ content }}</li>
+            </ul>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </div>
+  </div>
+</section>
+
+<section class="section steps" @fadeIn>
+  <div class="content">
+    <nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+      <nb-card-body>
+        <nb-stepper orientation="horizontal">
+          <nb-step *ngFor="let step of steps; let i = index" [label]="step.label">
+            <ng-template #label>{{ step.label }}</ng-template>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+            <button nbButton [disabled]="i === 0" nbStepperPrevious>prev</button>
+            <button nbButton [disabled]="i === steps.length - 1" nbStepperNext>next</button>
+            <button class="btn delete-btn"  (click)="confirmDeleteStep(step.id)"><i class="fas fa-trash"></i></button>
+          </nb-step>
+        </nb-stepper>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</section>
+
+
+<div class="item-list">
   <div class="item-container">
     <h1>Advantage</h1>
     <div class="item" *ngFor="let item of avantage">
       <span class="item-name">{{ item.description }}</span>
       <div class="item-actions">
         <button class="btn btn-update" (click)="updateAvantage(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteAvantage(item.id)"><i class="fas fa-trash"></i> </button>
+        <button class="btn btn-delete" (click)="confirmDeleteAvantage(item.id)"><i class="fas fa-trash"></i> </button>
       </div>
     </div>
     <div class="item-add">
@@ -31,63 +80,11 @@
       <span class="item-name">{{ item.description }}</span>
       <div class="item-actions">
         <button class="btn btn-update" (click)="updateLimitation(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteLimitation(item.id)"><i class="fas fa-trash"></i> </button>
+        <button class="btn btn-delete" (click)="confirmDeleteLimitation(item.id)"><i class="fas fa-trash"></i> </button>
       </div>
     </div>
     <div class="item-add">
       <button class="btn btn-add" (click)="addLimitation()"><i class="fas fa-plus"></i> </button>
     </div>
   </div>
-  <div class="item-container">
-    <h1>What</h1>
-    <div class="item" *ngFor="let item of what">
-      <span class="item-name">{{ item.description }}</span>
-      <div class="item-actions">
-        <button class="btn btn-update" (click)="updateWhat(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteWhat(item.id)"><i class="fas fa-trash"></i> </button>
-      </div>
-    </div>
-    <div class="item-add">
-      <button class="btn btn-add" (click)="addWhat()"><i class="fas fa-plus"></i> </button>
-    </div>
   </div>
-  <div class="item-container">
-    <h1>How</h1>
-    <div class="item" *ngFor="let item of how">
-      <span class="item-name">{{ item.description }}</span>
-      <div class="item-actions">
-        <button class="btn btn-update" (click)="updateHow(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteHow(item.id)"><i class="fas fa-trash"></i> </button>
-      </div>
-    </div>
-    <div class="item-add">
-      <button class="btn btn-add" (click)="addHow()"><i class="fas fa-plus"></i> </button>
-    </div>
-  </div>
-  <div class="item-container">
-    <h1>Why</h1>
-    <div class="item" *ngFor="let item of why">
-      <span class="item-name">{{ item.description }}</span>
-      <div class="item-actions">
-        <button class="btn btn-update" (click)="updateWhy(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteWhy(item.id)"><i class="fas fa-trash"></i> </button>
-      </div>
-    </div>
-    <div class="item-add">
-      <button class="btn btn-add" (click)="addWhy()"><i class="fas fa-plus"></i> </button>
-    </div>
-  </div>
-  <div class="item-container">
-    <h1>WhatIf</h1>
-    <div class="item" *ngFor="let item of whatif">
-      <span class="item-name">{{ item.description }}</span>
-      <div class="item-actions">
-        <button class="btn btn-update" (click)="updateWhatIf(item.id)"><i class="fas fa-edit"></i> </button>
-        <button class="btn btn-delete" (click)="deleteWhatIf(item.id)"><i class="fas fa-trash"></i> </button>
-      </div>
-    </div>
-    <div class="item-add">
-      <button class="btn btn-add" (click)="addWhatIf()"><i class="fas fa-plus"></i> </button>
-    </div>
-  </div>
-</div>

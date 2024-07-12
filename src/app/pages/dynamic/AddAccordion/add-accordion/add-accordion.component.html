@@ -1,0 +1,22 @@
+<div class="container">
+    <h3 class="h3 mb-3 fw-normal">Add Accordion</h3>
+
+        <form [formGroup]="accordionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input id="title" formControlName="title" class="form-control" />
+          </div>
+          <div formArrayName="content" class="form-group">
+            <label>Content:</label>
+            <div *ngFor="let contentControl of content.controls; let i = index" class="form-group-inline">
+              <input [formControlName]="i" class="form-control" />
+              <button type="button" (click)="removeContentField(i)"  class="btn btn-lg btn-primary" >Remove</button>
+            </div>
+            <button type="button" (click)="addContentField()"  class="btn btn-lg btn-primary" >Add More Content</button>
+          </div>
+          <button type="submit"  class="btn btn-lg btn-primary" >Add Accordion Item</button>
+        </form>
+ 
+    </div>
+
+  
