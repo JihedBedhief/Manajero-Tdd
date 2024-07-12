@@ -21,12 +21,12 @@ export class ProjectService {
   }
 
 
-  deleteProjectById(idLim: any):Observable<any>{
-    return this.http.delete(BASE_URL+`api/project/${idLim}`);
+  deleteProjectById(id: any):Observable<any>{
+    return this.http.delete(BASE_URL+`api/project/${id}`);
   }
-  
-  updateProject(idLim: number, projectdto : any):Observable<any>{
-    return this.http.put(BASE_URL+`api/project/${idLim}`,projectdto);
+
+  updateProject(id: number, projectdto : any):Observable<any>{
+    return this.http.put(BASE_URL+`api/project/${id}`,projectdto);
   }
 
 
