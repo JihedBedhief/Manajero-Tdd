@@ -12,6 +12,7 @@ import { AccordionComponent } from './layout/accordion/accordion.component';
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
+import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
 
 const routes: Routes = [{
   path: '',
@@ -85,9 +86,12 @@ const routes: Routes = [{
       component: HeaderComponent,
       children: [
         { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
-        { path: 'Dashboard', component: TDDComponent },
+        { path: 'Statistics', component: StatisticsComponent },
+        { path: 'Tdd', component: TDDComponent },
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
+       // { path: 'Task', component: TaskListComponent },
+
 
        
       ],

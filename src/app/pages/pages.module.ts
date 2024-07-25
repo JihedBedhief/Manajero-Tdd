@@ -22,6 +22,9 @@ import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
 import { ProjectComponent } from './Project/project.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
 
 
 
@@ -48,6 +51,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ReactiveFormsModule,
     MatDialogModule,
     FullCalendarModule,
+    DragDropModule,
 
     
   ],
@@ -64,6 +68,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ProjectComponent,
     HeaderComponent,
     CalenderComponent,
+    StatisticsComponent,
 
 
   ],
