@@ -10,6 +10,8 @@ import { ItemListComponent } from './dynamic/item-list/item-list.component';
 import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
 import { AccordionComponent } from './layout/accordion/accordion.component';
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
+import { HeaderComponent } from './header/header/header.component';
+import { CalenderComponent } from './header/header/calender/calender/calender.component';
 
 const routes: Routes = [{
   path: '',
@@ -80,16 +82,21 @@ const routes: Routes = [{
     },
     {
       path: 'agile/tdd',
-      component: TDDComponent,
+      component: HeaderComponent,
+      children: [
+        { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
+        { path: 'Dashboard', component: TDDComponent },
+        { path: 'dynamic', component: ItemListComponent },
+        { path: 'Calender', component: CalenderComponent },
+
+       
+      ],
     },
-    {
+   /* {
       path: 'agile/tdd/dynamic',
       component: ItemListComponent,
-    },
-    {
-      path: 'agile/tdd/addaccordion',
-      component: AddAccordionComponent,
-    },
+    },*/
+
     {
       path: '**',
       component: NotFoundComponent,

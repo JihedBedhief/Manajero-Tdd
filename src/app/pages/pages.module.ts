@@ -18,7 +18,13 @@ import { UpdateSectionComponent } from './dynamic/UpdateSection/update-section/u
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
 import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
-import { ProjectComponent } from './project/project.component';
+import { HeaderComponent } from './header/header/header.component';
+import { CalenderComponent } from './header/header/calender/calender/calender.component';
+import { ProjectComponent } from './Project/project.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
+
 
 
 @NgModule({
@@ -40,7 +46,9 @@ import { ProjectComponent } from './project/project.component';
     NbUserModule,
     LayoutRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    FullCalendarModule,
+
     
   ],
   declarations: [
@@ -54,6 +62,9 @@ import { ProjectComponent } from './project/project.component';
     AupdateAccordionComponent,
     AddStepComponent,
     ProjectComponent,
+    HeaderComponent,
+    CalenderComponent,
+
 
   ],
 })

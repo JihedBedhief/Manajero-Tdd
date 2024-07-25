@@ -1,0 +1,22 @@
+<div class="navbar">
+    <ul class="main-menu">
+        <li><a [routerLink]="['/pages/agile/tdd/Dashboard']" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+      <li><a [routerLink]="['/pages/agile/tdd/dynamic']" routerLinkActive="active"> <i class="fas fa-tasks"></i>Sprints</a></li>
+      <li><a [routerLink]="['/pages/agile/tdd/Calender']" routerLinkActive="active"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+      <li><a routerLink="/agile/tdd/meetings" routerLinkActive="active"> <i class="fas fa-users"></i>Meetings</a></li>
+      <li><a routerLink="/agile/tdd/documentation" routerLinkActive="active"><i class="fas fa-file-alt"></i>Documentation</a></li>
+    </ul>
+    <ul class="sub-menu">
+      <li><a routerLink="/agile/tdd/sprints/backlog" routerLinkActive="active">1-Backlog</a></li>
+      <li><a routerLink="/agile/tdd/sprints/timeline" routerLinkActive="active">2-Timeline</a></li>
+      <li><a routerLink="/agile/tdd/sprints/board" routerLinkActive="active">3-Board</a></li>
+      <li><a routerLink="/agile/tdd/sprints/review" routerLinkActive="active">4-Review</a></li>
+      <li><a routerLink="/agile/tdd/sprints/retrospective" routerLinkActive="active">5-Retrospective</a></li>
+      <li><a routerLink="/agile/tdd/sprints/sprint-planning" routerLinkActive="active">5-Sprint Planning</a></li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  
