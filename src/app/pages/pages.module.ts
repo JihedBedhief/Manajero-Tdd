@@ -25,6 +25,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
+import { CommonModule } from '@angular/common';
+import { ListTasksComponent } from './list-tasks/list-tasks.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 
 
@@ -52,6 +56,7 @@ import { StatisticsComponent } from './header/header/statistics/statistics/stati
     MatDialogModule,
     FullCalendarModule,
     DragDropModule,
+    CommonModule,
 
     
   ],
@@ -69,6 +74,9 @@ import { StatisticsComponent } from './header/header/statistics/statistics/stati
     HeaderComponent,
     CalenderComponent,
     StatisticsComponent,
+    CardDetailsComponent,
+   
+    
 
 
   ],
