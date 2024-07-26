@@ -91,16 +91,16 @@ const routes: Routes = [{
         { path: 'Tdd', component: TDDComponent },
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
-       // { path: 'Task', component: TaskListComponent },
+        { path: 'Task', component: ListTasksComponent },
 
 
        
       ],
     },
-    {
+    /*{
       path: 'tasks',
       component: ListTasksComponent,
-    },
+    },*/
     {
       path: '**',
       component: NotFoundComponent,

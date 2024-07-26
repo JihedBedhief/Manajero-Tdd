@@ -1,75 +1,164 @@
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$light-color: #f8f9fa;
+$background-color: #ffffff;
+$border-radius: 8px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e9ecef;
+  margin: 0;
+  padding: 20px;
+  color: #343a40;
+}
+
 .example-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.example-container {
+  width: 30%;
+  max-width: 30%;
+  margin: 0 10px;
+  background-color: $light-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: lighten($light-color, 5%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+    flex: 0 0 auto;
+    color: $primary-color;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+}
+
+.example-list {
+  border: solid 1px $secondary-color;
+  min-height: 60px;
+  background: $background-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 8px;
+  gap: 8px;
+
+  .example-box {
+    padding: 10px;
+    border: solid 1px $secondary-color;
+    border-radius: $border-radius;
+    color: rgba(0, 0, 0, 0.87);
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-  }
-  
-  .example-container {
-    width: 30%;
-    max-width: 30%;
-    margin: 0 10px;
-    display: inline-block;
-    vertical-align: top;
-
-    h2 {
-        margin: 20px 0;
-        text-align: center;
-        flex: 0 0 auto;
-      }
-  }
-  
-  .example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-    align-items: center; 
-    padding: 8px;
- 
-
-  
-    .example-box {
-      padding: 10px;
-      border-bottom: solid 1px #ccc;
-      color: rgba(0, 0, 0, 0.87);
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-      cursor: move;
-      width: 100%; 
-      max-width: 300px;
-      background: white;
-      font-size: 14px;
-  
-      &:last-child {
-        border: none;
-      }
-    }
-  
-    &.cdk-drop-list-dragging {
-      .example-box:not(.cdk-drag-placeholder) {
-        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-      }
-    }
-  }
-  
-  .cdk-drag-preview {
     box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 
-      0 5px 5px -3px rgba(0, 0, 0, 0.2),
-      0 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    cursor: move;
+    width: 100%;
+    background: $background-color;
+    font-size: 14px;
+    transition: background-color 0.3s, border 0.3s;
+
+    &:hover {
+      background-color: lighten($background-color, 5%);
+      border-color: $primary-color;
+    }
+
+    &:last-child {
+      border: solid 1px $secondary-color;
+    }
+
+    .task-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      .task-name {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .task-tests {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .task-test {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          input[type="checkbox"] {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .task-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+
+      button {
+        background: none;
+        border: none;
+        color: $primary-color;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 4px 8px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: darken($primary-color, 10%);
+        }
+      }
+    }
   }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
+
+  &.cdk-drop-list-dragging {
+    .example-box:not(.cdk-drag-placeholder) {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
   }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background: $background-color;
+  border: solid 1px $secondary-color;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

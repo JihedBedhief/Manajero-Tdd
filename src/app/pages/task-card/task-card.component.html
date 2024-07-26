@@ -1,7 +1,19 @@
-<div class="card" (click)="onViewDetails()">
-  <span>{{ item }}</span>
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">{{ task.name }}</div>
+    <div class="card-status" [ngClass]="task.status">{{ task.status }}</div>
+  </div>
+  <div class="card-content">
+    <div class="task-test" *ngFor="let test of task.tests">
+      <input type="checkbox" [(ngModel)]="test.completed" (change)="onTestChange()" />
+      {{ test.name }}
+    </div>
+  </div>
   <div class="card-actions">
-    <button class="fas fa-edit" (click)="onEdit()"></button>
-    <button class="fas fa-trash" (click)="onDelete()"></button>
+    <button (click)="delete.emit()"><i class="fas fa-trash"></i>
+    </button>
+    <button (click)="edit.emit()"><i class="fas fa-edit"></i>
+    </button>
+    <button (click)="viewDetails.emit()">Details</button>
   </div>
 </div>
