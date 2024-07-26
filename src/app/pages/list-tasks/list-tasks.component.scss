@@ -1,20 +1,31 @@
 .example-row {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Add space between columns */
   }
   
   .example-container {
-    width: 30%;
+    width: 100%;
     max-width: 30%;
-    margin: 0 10px;
-    display: inline-block;
-    vertical-align: top;
-
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
     h2 {
-        margin: 20px 0;
-        text-align: center;
-        flex: 0 0 auto;
-      }
+      margin: 20px 0;
+      text-align: center;
+      flex: 0 0 auto;
+    }
+  
+    @media (max-width: 1200px) {
+      max-width: 45%; /* Adjust for medium-sized screens */
+    }
+  
+    @media (max-width: 768px) {
+      max-width: 90%; /* Adjust for small screens */
+    }
   }
   
   .example-list {
@@ -23,11 +34,11 @@
     background: white;
     border-radius: 4px;
     overflow: hidden;
-    display: block;
-    align-items: center; 
+    display: flex;
+    flex-direction: column; /* Ensure cards are stacked vertically */
+    align-items: center;
     padding: 8px;
- 
-
+    width: 100%;
   
     .example-box {
       padding: 10px;
@@ -39,10 +50,12 @@
       justify-content: space-between;
       box-sizing: border-box;
       cursor: move;
-      width: 100%; 
+      width: 100%;
       max-width: 300px;
       background: white;
       font-size: 14px;
+      border-radius: 4px; /* Add border-radius to match card style */
+      margin-bottom: 10px; /* Add margin between cards */
   
       &:last-child {
         border: none;
