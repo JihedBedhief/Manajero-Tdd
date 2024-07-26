@@ -10,6 +10,16 @@ import {
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+interface Test {
+  name: string;
+  completed: boolean;
+}
+
+export interface Task {
+  name: string;
+  tests: Test[];
+  status: 'todo' | 'inProgress' | 'done';
+}
 @Component({
   selector: 'ngx-list-tasks',
   templateUrl: './list-tasks.component.html',
@@ -22,16 +32,30 @@ import { MatDialog } from '@angular/material/dialog';
     CdkDropList]
 })
 export class ListTasksComponent {
-
   constructor(private dialog: MatDialog) {}
 
+  todo: Task[] = [
+    { name: 'Get to work', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
+    { name: 'Pick up groceries', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
+    { name: 'Go home', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
+    { name: 'Fall asleep', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' }
+  ];
+  
+  inProgress: Task[] = [
+    { name: 'Work on project', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: true }], status: 'inProgress' },
+    { name: 'Study for exam', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: true }], status: 'inProgress' }
+  ];
+  
+  done: Task[] = [
+    { name: 'Get up', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
+    { name: 'Brush teeth', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
+    { name: 'Take a shower', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
+    { name: 'Check e-mail', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
+    { name: 'Walk dog', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' }
+  ];
+  
 
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  inProgress = ['Work on project', 'Study for exam'];
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -44,35 +68,49 @@ export class ListTasksComponent {
     }
   }
 
-  deleteItem(list: string[], index: number) {
+  deleteItem(list: Task[], index: number) {
     list.splice(index, 1);
   }
 
-  editItem(item: string) {
-    const newValue = prompt('Edit item', item);
+  editItem(task: Task) {
+    const newValue = prompt('Edit item', task.name);
     if (newValue !== null && newValue.trim() !== '') {
-      const index = this.todo.indexOf(item);
-      if (index !== -1) {
-        this.todo[index] = newValue;
-      } else {
-        const inProgressIndex = this.inProgress.indexOf(item);
-        if (inProgressIndex !== -1) {
-          this.inProgress[inProgressIndex] = newValue;
-        } else {
-          const doneIndex = this.done.indexOf(item);
-          if (doneIndex !== -1) {
-            this.done[doneIndex] = newValue;
-          }
-        }
-      }
+      task.name = newValue;
     }
   }
 
-
-  openDetailsModal(item: string) {
+  openDetailsModal(task: Task) {
     this.dialog.open(CardDetailsComponent, {
-      data: { item },
+      data: { task },
       width: '300px',
     });
+  }
+
+  onStatusChange(updatedTask: Task) {
+    // Remove the task from its previous list
+    this.removeTaskFromList(updatedTask);
+    // Add the task to the correct list based on its updated status
+    this.addTaskToList(updatedTask);
+  }
+
+  removeTaskFromList(task: Task) {
+    let index = this.todo.findIndex(t => t.name === task.name);
+    if (index !== -1) this.todo.splice(index, 1);
+    
+    index = this.inProgress.findIndex(t => t.name === task.name);
+    if (index !== -1) this.inProgress.splice(index, 1);
+    
+    index = this.done.findIndex(t => t.name === task.name);
+    if (index !== -1) this.done.splice(index, 1);
+  }
+
+  addTaskToList(task: Task) {
+    if (task.status === 'todo') {
+      this.todo.push(task);
+    } else if (task.status === 'inProgress') {
+      this.inProgress.push(task);
+    } else if (task.status === 'done') {
+      this.done.push(task);
+    }
   }
 }
