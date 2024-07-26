@@ -22,6 +22,11 @@ import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
 import { ProjectComponent } from './Project/project.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ListTasksComponent } from './list-tasks/list-tasks.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 
 
@@ -48,6 +53,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ReactiveFormsModule,
     MatDialogModule,
     FullCalendarModule,
+    CommonModule,
 
     
   ],
@@ -64,6 +70,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ProjectComponent,
     HeaderComponent,
     CalenderComponent,
+    CardDetailsComponent,
+   
+    
 
 
   ],
