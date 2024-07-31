@@ -1,0 +1,67 @@
+<div class="example-row">
+  <div class="example-container">
+    <h2>To do</h2>
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList, inProgressList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <ngx-task-card 
+        class="example-box" 
+        cdkDrag 
+        *ngFor="let task of todo; let i = index" 
+        [task]="task"
+        (delete)="deleteItem(todo, i)"
+        (edit)="editItem(task)"
+        (viewDetails)="openDetailsModal(task)"
+        (statusChange)="onStatusChange(task)">
+      </ngx-task-card>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>In Progress</h2>
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgress"
+      [cdkDropListConnectedTo]="[todoList, doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <ngx-task-card 
+        class="example-box" 
+        cdkDrag 
+        *ngFor="let task of inProgress; let i = index" 
+        [task]="task"
+        (delete)="deleteItem(inProgress, i)"
+        (edit)="editItem(task)"
+        (viewDetails)="openDetailsModal(task)"
+        (statusChange)="onStatusChange(task)">
+      </ngx-task-card>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, inProgressList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <ngx-task-card 
+        class="example-box" 
+        cdkDrag 
+        *ngFor="let task of done; let i = index" 
+        [task]="task"
+        (delete)="deleteItem(done, i)"
+        (edit)="editItem(task)"
+        (viewDetails)="openDetailsModal(task)"
+        (statusChange)="onStatusChange(task)">
+      </ngx-task-card>
+    </div>
+  </div>
+</div>

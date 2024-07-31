@@ -19,14 +19,20 @@ import { UpdateSectionComponent } from './dynamic/UpdateSection/update-section/u
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
 import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
-import { ProjectComponent } from './project/project.component';
-import { AddTaskComponent } from './Task/add-task/add-task.component';
-import { UpdateTaskComponent } from './Task/update-task/update-task.component';
-import { TaskListComponent } from './Task/task-list/task-list.component';
-import { TaskDetailComponent } from './Task/task-detail/task-detail.component';
-import { DndModule } from 'angular-drag-and-drop-lists';
+import { HeaderComponent } from './header/header/header.component';
+import { CalenderComponent } from './header/header/calender/calender/calender.component';
+import { ProjectComponent } from './Project/project.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { KanbanBoardComponent } from './Task/kanban-board/kanban-board.component';
+import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
+import { CommonModule } from '@angular/common';
+import { ListTasksComponent } from './list-tasks/list-tasks.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
+
+
+
 
 
 @NgModule({
@@ -51,13 +57,10 @@ import { KanbanBoardComponent } from './Task/kanban-board/kanban-board.component
     LayoutRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    NbSelectModule,
-    NbLayoutModule,
-    NbThemeModule,
-    NbDatepickerModule,
-    NbCheckboxModule,
+    FullCalendarModule,
     DragDropModule,
-    BsDatepickerModule.forRoot(),
+    CommonModule,
+
     
   ],
   
@@ -72,11 +75,13 @@ import { KanbanBoardComponent } from './Task/kanban-board/kanban-board.component
     AupdateAccordionComponent,
     AddStepComponent,
     ProjectComponent,
-    AddTaskComponent,
-    UpdateTaskComponent,
-    TaskListComponent,
-    TaskDetailComponent,
-    KanbanBoardComponent,
+    HeaderComponent,
+    CalenderComponent,
+    StatisticsComponent,
+    CardDetailsComponent,
+   
+    
+
 
   ],
   
