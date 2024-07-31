@@ -15,6 +15,10 @@ import { AddAccordionComponent } from '../AddAccordion/add-accordion/add-accordi
 import { AupdateAccordionComponent } from '../UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
 import { StepService } from '../../../services/step/step.service';
 import { AddStepComponent } from '../AddStep/add-step/add-step.component';
+import { AddTaskComponent } from '../../Task/add-task/add-task.component';
+import { TaskListComponent } from '../../Task/task-list/task-list.component';
+import { TaskDetailComponent } from '../../Task/task-detail/task-detail.component';
+import { KanbanBoardComponent } from '../../Task/kanban-board/kanban-board.component';
 
 interface AccordionItem {
   id?: number;
@@ -59,6 +63,18 @@ export class ItemListComponent implements OnInit {
 
   openAddSection() {
     this._dialogue.open(AddSectionComponent);
+  }
+  openAddTask() {
+    this._dialogue.open(AddTaskComponent);
+  }
+  openListTask() {
+    this._dialogue.open(TaskListComponent);
+  }
+  openDetailTask() {
+    this._dialogue.open(TaskDetailComponent);
+  }
+  openkanban() {
+    this._dialogue.open(KanbanBoardComponent);
   }
   openAddStep() {
     this._dialogue.open(AddStepComponent);

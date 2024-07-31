@@ -1,0 +1,92 @@
+<!-- 
+<div class="kanban-board">
+    <div
+      class="kanban-column"
+      *ngFor="let column of columns"
+      [cdkDropList]="column"
+      (cdkDropListDropped)="onDrop($event, column)"
+      cdkDropList
+    >
+      <h3>{{ column.name }}</h3>
+      <div
+        class="kanban-item"
+        *ngFor="let task of column.tasks"
+        cdkDrag
+      >
+        {{ task.name }}
+      </div>
+    </div>
+  </div>
+  --> 
+
+
+
+ <!-- kanban-board.component.html 
+<div class="kanban-board">
+    <div class="tasks-column"
+         cdkDropList
+         [cdkDropListData]="tasksColumn"
+         (cdkDropListDropped)="onDrop($event)">
+      <h3>Tasks</h3>
+      <div class="kanban-item"
+           *ngFor="let task of tasksColumn"
+           cdkDrag
+           [cdkDragData]="task">
+        {{ task.name }}
+      </div>
+    </div>
+  
+    <div class="kanban-columns">
+      <div class="kanban-column"
+           *ngFor="let column of columns"
+           cdkDropList
+           [cdkDropListData]="column.tasks"
+           (cdkDropListDropped)="onDrop($event)">
+        <h3>{{ column.name }}</h3>
+        <div class="kanban-item"
+             *ngFor="let task of column.tasks"
+             cdkDrag
+             [cdkDragData]="task">
+          {{ task.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+
+
+  <!-- kanban-board.component.html -->
+<!-- kanban-board.component.html -->
+<div class="kanban-board">
+    <div class="tasks-column"
+         cdkDropList
+         [cdkDropListData]="tasksColumn"
+         (cdkDropListDropped)="onDrop($event)">
+      <h3>Tasks</h3>
+      <div class="kanban-item"
+           *ngFor="let task of tasksColumn"
+           cdkDrag
+           [cdkDragData]="task">
+        {{ task.name }}
+      </div>
+    </div>
+  
+    <div class="kanban-columns">
+      <div class="kanban-column"
+           *ngFor="let column of columns"
+           cdkDropList
+           [cdkDropListData]="column.tasks"
+           (cdkDropListDropped)="onDrop($event)">
+        <h3>{{ column.name }}</h3>
+        <div class="kanban-item"
+             *ngFor="let task of column.tasks"
+             cdkDrag
+             [cdkDragData]="task">
+          {{ task.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

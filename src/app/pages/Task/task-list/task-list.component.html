@@ -1,0 +1,16 @@
+<div class="container">
+  <h3 class="h3 mb-3 fw-normal">Task List</h3>
+  <div class="task-list">
+    <nb-card *ngFor="let task of tasks">
+      <nb-card-header>{{ task.name }}</nb-card-header>
+      <nb-card-body>
+        <p><strong>Project:</strong> {{ task.project }}</p>
+        <p><strong>Assigned to:</strong> {{ task.assigned.join(', ') }}</p>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
+        <p><strong>Status:</strong> {{ task.status }}</p>
+        <p><strong>Comments:</strong> {{ task.comments }}</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

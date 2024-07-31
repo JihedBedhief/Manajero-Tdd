@@ -10,6 +10,7 @@ import { ItemListComponent } from './dynamic/item-list/item-list.component';
 import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
 import { AccordionComponent } from './layout/accordion/accordion.component';
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
 
 const routes: Routes = [{
   path: '',
@@ -90,6 +91,11 @@ const routes: Routes = [{
       path: 'agile/tdd/addaccordion',
       component: AddAccordionComponent,
     },
+    {
+      path: 'agile/tdd/addTask',
+      component: AddTaskComponent,
+    },
+    
     {
       path: '**',
       component: NotFoundComponent,

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbListModule, NbMenuModule, NbRouteTabsetModule, NbStepperModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
-
+import { NbAccordionModule, NbButtonModule, NbCardModule, NbListModule, NbMenuModule, NbRouteTabsetModule, NbStepperModule, NbTabsetModule, NbUserModule,NbSelectModule,NbLayoutModule,NbThemeModule,NbDatepickerModule,NbCheckboxModule } from '@nebular/theme';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+//import { BrowserModule } from '@angular/platform-browser'; 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -19,11 +20,19 @@ import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-
 import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-accordion/aupdate-accordion.component';
 import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
 import { ProjectComponent } from './project/project.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+import { UpdateTaskComponent } from './Task/update-task/update-task.component';
+import { TaskListComponent } from './Task/task-list/task-list.component';
+import { TaskDetailComponent } from './Task/task-detail/task-detail.component';
+import { DndModule } from 'angular-drag-and-drop-lists';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { KanbanBoardComponent } from './Task/kanban-board/kanban-board.component';
 
 
 @NgModule({
   imports: [
     PagesRoutingModule,
+  //  BrowserModule,
     ThemeModule,
     NbMenuModule,
     DashboardModule,
@@ -31,6 +40,7 @@ import { ProjectComponent } from './project/project.component';
     MiscellaneousModule,
     ThemeModule,
     NbTabsetModule,
+  
     NbRouteTabsetModule,
     NbStepperModule,
     NbCardModule,
@@ -40,9 +50,17 @@ import { ProjectComponent } from './project/project.component';
     NbUserModule,
     LayoutRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NbSelectModule,
+    NbLayoutModule,
+    NbThemeModule,
+    NbDatepickerModule,
+    NbCheckboxModule,
+    DragDropModule,
+    BsDatepickerModule.forRoot(),
     
   ],
+  
   declarations: [
     PagesComponent,
     TDDComponent,
@@ -54,8 +72,14 @@ import { ProjectComponent } from './project/project.component';
     AupdateAccordionComponent,
     AddStepComponent,
     ProjectComponent,
+    AddTaskComponent,
+    UpdateTaskComponent,
+    TaskListComponent,
+    TaskDetailComponent,
+    KanbanBoardComponent,
 
   ],
+  
 })
 export class PagesModule {
 }

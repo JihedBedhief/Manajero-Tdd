@@ -1,0 +1,82 @@
+<div class="container">
+    <h3 class="h3 mb-3 fw-normal">Add Task</h3>
+    <div class="form-scroll-container">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+          <nb-card>
+          <div class="form-group">
+            <label for="name">name:</label>
+            <input id="name" formControlName="name" class="form-control" />
+          </div>
+        </nb-card>
+
+         <nb-card>
+      <nb-card-header>Project</nb-card-header>
+      <nb-card-body>
+        <nb-select selected="1">
+          <nb-option value="1">Project 1</nb-option>
+          <nb-option value="2">Project 2</nb-option>
+        </nb-select>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Assigned to</nb-card-header>
+      <nb-card-body class="checkbox-radio">
+        <div class="demo-items">
+          <nb-checkbox>User 1</nb-checkbox>
+          <nb-checkbox checked>User 2</nb-checkbox>
+        </div>
+      </nb-card-body>
+      </nb-card>
+
+   
+        <nb-card>
+            <label for="description">Description</label>
+          <div class="form-floating mb-3">
+            <textarea matInput formControlName="description" placeholder="" class="form-control"></textarea>
+          </div>
+        </nb-card>
+
+        <nb-card>
+              <div>Due Date</div>
+              <div>
+                <input nbInput
+                       placeholder="Date"
+                       [nbDatepicker]="formpicker">
+                <nb-datepicker #formpicker></nb-datepicker>
+              </div>
+            </nb-card>
+
+      
+          <nb-card>
+            <nb-card-header>Status</nb-card-header>
+            <nb-card-body>
+              <nb-checkbox status="success">Success Checkbox</nb-checkbox>
+        <nb-checkbox status="warning">Warning Checkbox</nb-checkbox>
+        <nb-checkbox status="danger">Danger Checkbox</nb-checkbox>
+        <div class="validation-checkboxes">
+      </div>
+    </nb-card-body>
+          </nb-card>
+
+
+          <nb-card>
+            <label for="Comments">Comments:</label>
+            <div class="form-floating mb-3">
+              <textarea matInput formControlName="Comments" placeholder="" class="form-control"></textarea>
+            </div>          
+          </nb-card>
+
+         
+
+         
+
+          <button type="submit"  class="btn btn-lg btn-primary" >Add Task Item</button>
+        </form>
+ 
+    </div>
+  </div>
+
+
+  
