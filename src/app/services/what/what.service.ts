@@ -21,6 +21,10 @@ export class WhatService {
     return this.http.post(BASE_URL+"api/what",whatdto);
     
   }
+  getTask():Observable<any>{
+    return this.http.get(BASE_URL+"api/task");
+    
+  }
 
   deleteWhatById(idWhat : any):Observable<any>{
     return this.http.delete(BASE_URL+`api/what/${idWhat}`);

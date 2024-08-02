@@ -162,3 +162,18 @@ body {
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+@media (max-width: 1200px) {
+  .mat-dialog-container {
+    width: 90vw; // 90% of viewport width on smaller screens
+  }
+}
+
+@media (max-width: 600px) {
+  .mat-dialog-container {
+    width: 95vw; // 95% of viewport width on very small screens
+  }
+}
+
+
+

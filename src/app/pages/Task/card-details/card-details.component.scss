@@ -1,0 +1,69 @@
+/* Basic styles for the container and layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh; /* Ensure the container takes full viewport height */
+  }
+  
+  .form-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    flex: 1; /* Allows the form-container to grow and push the button to the bottom */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  }
+  
+  .left-column, .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  nb-card {
+    width: 100%;
+  }
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; /* Adds space between the content and the button */
+  }
+  
+  /* Button Styling */
+  button {
+    margin: 0; /* Ensure no additional margin */
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .form-container {
+      flex-direction: column; /* Stack columns vertically on smaller screens */
+      gap: 10px; /* Reduce gap between form cards */
+    }
+  
+    .left-column, .right-column {
+      width: 100%; /* Full width for columns on small screens */
+      flex: none; /* Do not grow or shrink */
+    }
+  
+    .button-container {
+      margin-top: 30px; /* Increase space above button on small screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      padding: 10px; /* Reduce padding on very small screens */
+    }
+  
+    .button-container {
+      margin-top: 40px; /* Increase space above button on very small screens */
+    }
+  }
+  

@@ -1,0 +1,60 @@
+<div class="container">
+    <h3 class="h3 mb-3 fw-normal">Task Detail</h3>
+    <div class="form-container">
+      <div class="left-column">
+        <nb-card>
+          <nb-card-header>Task Information</nb-card-header>
+          <nb-card-body>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <p id="name">{{ task.name }}</p>
+            </div>
+  
+            <div class="form-group">
+              <label for="project">Project:</label>
+              <p id="project">{{ task.project }}</p>
+            </div>
+  
+            <div class="form-group">
+              <label for="assigned">Assigned to:</label>
+              <div id="assigned">
+                <p *ngFor="let user of task.assigned">{{ user }}</p>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <p id="description">{{ task.description }}</p>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="right-column">
+        <nb-card>
+          <nb-card-header>Due Date</nb-card-header>
+          <nb-card-body>
+            <p id="due-date">{{ task.dueDate | date }}</p>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card>
+          <nb-card-header>Status</nb-card-header>
+          <nb-card-body>
+            <p id="status">{{ task.status }}</p>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card>
+          <nb-card-header>Comments</nb-card-header>
+          <nb-card-body>
+            <p id="comments">{{ task.comments }}</p>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <!-- Button Container -->
+    <div class="button-container">
+      <button (click)="onClose()">Close</button>
+    </div>
+  </div>
+  

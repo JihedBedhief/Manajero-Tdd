@@ -7,13 +7,12 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { TDDComponent } from './TDD/tdd/tdd.component';
 import { ItemListComponent } from './dynamic/item-list/item-list.component';
-import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
-import { AccordionComponent } from './layout/accordion/accordion.component';
-import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
 import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
-import { ListTasksComponent } from './list-tasks/list-tasks.component';
 import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+import { ListTasksComponent } from './Task/list-tasks/list-tasks.component';
+import { CardDetailsComponent } from './Task/card-details/card-details.component';
 
 const routes: Routes = [{
   path: '',
@@ -91,16 +90,25 @@ const routes: Routes = [{
         { path: 'Tdd', component: TDDComponent },
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
-        { path: 'Task', component: ListTasksComponent },
+        { path: 'add', component: AddTaskComponent },
+        { path: 'listTasks', component: ListTasksComponent },
+        { path: 'taskDetail', component: CardDetailsComponent },
 
 
        
       ],
     },
-    /*{
-      path: 'tasks',
-      component: ListTasksComponent,
-    },*/
+    {
+       path: 'task', component: ListTasksComponent ,
+      children: [
+        { path: 'add', component: AddTaskComponent },
+
+       
+
+
+       
+      ],
+    },
     {
       path: '**',
       component: NotFoundComponent,

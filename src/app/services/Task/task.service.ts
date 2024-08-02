@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-
+const BASE_URL ="http://localhost:9090/";
 export interface Test {
   id: number;
   description: string;
@@ -18,6 +20,7 @@ export interface Task {
   providedIn: 'root',
 })
 export class TaskService {
+  constructor(private http : HttpClient) { }
   tasks: Task[] = [
     {
       id: 1,
@@ -48,53 +51,26 @@ export class TaskService {
     },
   ];
 
-  getTasks(): Task[] {
-    return this.tasks;
+  getTask():Observable<any>{
+    return this.http.get(BASE_URL+"api/task");
+    
+  }
+  addTask(taskdto:any):Observable<any>{
+    return this.http.post(BASE_URL+"api/task",taskdto);
+    
+  }
+  deleteTaskById(idTask : any):Observable<any>{
+    return this.http.delete(BASE_URL+`api/task/${idTask}`);
+  }
+  updateTask(idTask: number, taskdto : any):Observable<any>{
+    return this.http.put(BASE_URL+`api/task/${idTask}`,taskdto);
+  }
+  getTaskById(idTask : any):Observable<any>{
+    return this.http.get(BASE_URL+`api/task/${idTask}`
+    )
   }
 
-  updateTaskStatus(taskId: number, status: Task['status']) {
-    const task = this.tasks.find(t => t.id === taskId);
-    if (task) {
-      task.status = status;
-    }
-  }
 
-  updateTestStatus(taskId: number, testId: number, completed: boolean) {
-    const task = this.tasks.find(t => t.id === taskId);
-    if (task) {
-      const test = task.tests.find(t => t.id === testId);
-      if (test) {
-        test.completed = completed;
-        this.updateTaskStatusBasedOnTests(task);
-      }
-    }
-  }
-
-  addTestToTask(taskId: number, description: string) {
-    const task = this.tasks.find(t => t.id === taskId);
-    if (task) {
-      const newTest: Test = {
-        id: task.tests.length + 1,
-        description,
-        completed: false,
-      };
-      task.tests.push(newTest);
-      this.updateTaskStatusBasedOnTests(task);
-    }
-  }
-
-  private updateTaskStatusBasedOnTests(task: Task) {
-    const allTestsCompleted = task.tests.every(test => test.completed);
-    const someTestsCompleted = task.tests.some(test => test.completed);
-
-    if (allTestsCompleted) {
-      task.status = 'completed';
-    } else if (someTestsCompleted) {
-      task.status = 'in-progress';
-    } else {
-      task.status = 'just-started';
-    }
-  }
   getTotalTasks(): number {
     return this.tasks.length;
   }

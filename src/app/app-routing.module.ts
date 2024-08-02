@@ -8,7 +8,7 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { ListTasksComponent } from './pages/list-tasks/list-tasks.component';
+import { ListTasksComponent } from './pages/Task/list-tasks/list-tasks.component';
 
 export const routes: Routes = [
   {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbListModule, NbMenuModule, NbRouteTabsetModule, NbStepperModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
+import { NbAccordionModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbLayoutModule, NbListModule, NbMenuModule, NbOptionModule, NbRouteTabsetModule, NbSelectModule, NbStepperModule, NbTabsetModule, NbThemeModule, NbUserModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -26,9 +26,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
 import { CommonModule } from '@angular/common';
-import { ListTasksComponent } from './list-tasks/list-tasks.component';
-import { TaskCardComponent } from './task-card/task-card.component';
-import { CardDetailsComponent } from './card-details/card-details.component';
+
+import { TaskCardComponent } from './Task/task-card/task-card.component';
+import { CardDetailsComponent } from './Task/card-details/card-details.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+
+import { UpdateTaskComponent } from './Task/update-task/update-task.component';
 
 
 
@@ -57,6 +60,13 @@ import { CardDetailsComponent } from './card-details/card-details.component';
     FullCalendarModule,
     DragDropModule,
     CommonModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbCardModule,
+    NbSelectModule,
+    NbOptionModule,
+    NbDatepickerModule.forRoot(),
+    NbCheckboxModule,
 
     
   ],
@@ -75,6 +85,8 @@ import { CardDetailsComponent } from './card-details/card-details.component';
     CalenderComponent,
     StatisticsComponent,
     CardDetailsComponent,
+    AddTaskComponent,
+    UpdateTaskComponent
    
     
 

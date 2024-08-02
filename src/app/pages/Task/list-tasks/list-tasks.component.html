@@ -13,8 +13,8 @@
         cdkDrag 
         *ngFor="let task of todo; let i = index" 
         [task]="task"
-        (delete)="deleteItem(todo, i)"
-        (edit)="editItem(task)"
+        (delete)="deleteItemm(todo, i)"
+        (edit)="openUpdateModal(task)"
         (viewDetails)="openDetailsModal(task)"
         (statusChange)="onStatusChange(task)">
       </ngx-task-card>
@@ -35,7 +35,7 @@
         cdkDrag 
         *ngFor="let task of inProgress; let i = index" 
         [task]="task"
-        (delete)="deleteItem(inProgress, i)"
+        (delete)="deleteItemm(inProgress, i)"
         (edit)="editItem(task)"
         (viewDetails)="openDetailsModal(task)"
         (statusChange)="onStatusChange(task)">
@@ -57,7 +57,7 @@
         cdkDrag 
         *ngFor="let task of done; let i = index" 
         [task]="task"
-        (delete)="deleteItem(done, i)"
+        (delete)="deleteItemm(done, i)"
         (edit)="editItem(task)"
         (viewDetails)="openDetailsModal(task)"
         (statusChange)="onStatusChange(task)">

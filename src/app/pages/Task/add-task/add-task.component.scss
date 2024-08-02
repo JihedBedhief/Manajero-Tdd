@@ -1,0 +1,66 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    nb-card {
+      width: 100%;
+      margin-bottom: 1rem;
+
+      nb-card-header {
+        font-weight: bold;
+      }
+
+      nb-select,
+      nb-checkbox,
+      nb-datepicker,
+      input[nbInput] {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .checkbox-radio {
+        display: flex;
+        flex-wrap: wrap;
+
+        .demo-items {
+          flex: 1 1 auto;
+          min-width: 100px;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    .form-floating {
+      textarea {
+        width: 100%;
+        height: 100px;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}

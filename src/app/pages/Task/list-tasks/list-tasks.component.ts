@@ -10,6 +10,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateTaskComponent } from '../update-task/update-task.component';
 interface Test {
   name: string;
   completed: boolean;
@@ -78,11 +79,24 @@ export class ListTasksComponent {
       task.name = newValue;
     }
   }
-
+  openUpdateModal(task: Task) {
+    const dialogRef = this.dialog.open(UpdateTaskComponent, {
+      data: { task },
+      width: '50vw',  // Adjust width to make the modal smaller
+      maxWidth: '90vw', // Ensure it doesn’t exceed 90% of the viewport width
+      panelClass: 'custom-modal'  // Ensure the modal itself also respects this width
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onStatusChange(result); // Update the task list
+      }
+    });
+  }
   openDetailsModal(task: Task) {
     this.dialog.open(CardDetailsComponent, {
       data: { task },
-      width: '300px',
+      maxWidth: '80vw', // Set the modal width to 80% of the viewport width
     });
   }
 
@@ -93,7 +107,18 @@ export class ListTasksComponent {
     this.addTaskToList(updatedTask);
   }
 
+
+  deleteItemm(list: Task[], index: number) {
+    const confirmDelete = window.confirm('Are you sure you want to delete this task?');
+    
+    if (confirmDelete) {
+      const task = list[index];
+      this.removeTaskFromList(task);
+    }
+  }
+
   removeTaskFromList(task: Task) {
+    
     let index = this.todo.findIndex(t => t.name === task.name);
     if (index !== -1) this.todo.splice(index, 1);
     

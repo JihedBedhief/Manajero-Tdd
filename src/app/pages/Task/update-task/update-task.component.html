@@ -1,0 +1,92 @@
+<div class="container">
+  <h3 class="h3 mb-3 fw-normal">Update Task</h3>
+  <form [formGroup]="taskForm">
+    <nb-card>
+      <nb-card-header>Name :</nb-card-header>
+      <nb-card-body>
+        <input id="name" formControlName="name" class="form-control" />
+        <div *ngIf="taskForm.get('name').invalid && taskForm.get('name').touched" class="error-message">
+          Name is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Project</nb-card-header>
+      <nb-card-body>
+        <nb-select formControlName="project">
+          <nb-option value="1">Project 1</nb-option>
+          <nb-option value="2">Project 2</nb-option>
+        </nb-select>
+        <div *ngIf="taskForm.get('project').invalid && taskForm.get('project').touched" class="error-message">
+          Project is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Assigned to</nb-card-header>
+      <nb-card-body>
+        <nb-select formControlName="assigned">
+          <nb-option value="1">Neji Benazarti</nb-option>
+          <nb-option value="2">Ayoub Ben Brahim</nb-option>
+          <nb-option value="3">Bedhief Jihed</nb-option>
+        </nb-select>
+        <div *ngIf="taskForm.get('assigned').invalid && taskForm.get('assigned').touched" class="error-message">
+          Assigned is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Description</nb-card-header>
+      <nb-card-body>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="taskForm.get('description').invalid && taskForm.get('description').touched" class="error-message">
+          Description is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Due date</nb-card-header>
+      <nb-card-body>
+        <input nbInput placeholder="Min Max Picker" [nbDatepicker]="picker" formControlName="dueDate" />
+        <nb-datepicker #picker [min]="min" [max]="max"></nb-datepicker>
+        <div *ngIf="taskForm.get('dueDate').invalid && taskForm.get('dueDate').touched" class="error-message">
+          Due Date is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Status</nb-card-header>
+      <nb-card-body>
+        <nb-select formControlName="status">
+          <nb-option value="success">Success</nb-option>
+          <nb-option value="warning">Warning</nb-option>
+          <nb-option value="danger">Danger</nb-option>
+        </nb-select>
+        <div *ngIf="taskForm.get('status').invalid && taskForm.get('status').touched" class="error-message">
+          Status is required
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Comments:</nb-card-header>
+      <nb-card-body>
+        <div formArrayName="comments">
+          <div *ngFor="let comment of comments.controls; let i = index">
+            <div [formGroupName]="i">
+              <textarea matInput placeholder="Comment" class="form-control"></textarea>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary mt-2" (click)="addCommentField()">Add Comment</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <button type="button" class="btn btn-lg btn-primary" (click)="onSubmit()">Update Task</button>
+  </form>
+</div>
