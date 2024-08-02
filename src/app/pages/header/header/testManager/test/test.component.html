@@ -1,0 +1,18 @@
+<div class="test-list-container">
+    <h2>Test List</h2>
+    <button class="btn update-btn" (click)="openAddTest()" ><i class="fas fa-plus"></i></button>
+
+    <div class="test-list">
+      <div *ngFor="let test of tests" class="test-item">
+        <div class="test-content">
+          <h3 class="test-name">{{ test.title }}</h3>
+          <p class="test-description">{{ test.description }}</p>
+        </div>
+        <div class="test-actions">
+          <button (click)="openUpdate(test.id)" class="btn update-btn"><i class="fas fa-edit"></i></button>
+          <button (click)="confirmDeleteTest(test.id)" class="btn delete-btn"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

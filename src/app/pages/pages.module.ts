@@ -32,6 +32,9 @@ import { CardDetailsComponent } from './Task/card-details/card-details.component
 import { AddTaskComponent } from './Task/add-task/add-task.component';
 
 import { UpdateTaskComponent } from './Task/update-task/update-task.component';
+import { TestComponent } from './header/header/testManager/test/test.component';
+import { AddTestComponent } from './header/header/testManager/test/AddTest/add-test/add-test.component';
+import { UpdateTestComponent } from './header/header/testManager/test/UpdateTest/update-test/update-test.component';
 
 
 
@@ -86,7 +89,10 @@ import { UpdateTaskComponent } from './Task/update-task/update-task.component';
     StatisticsComponent,
     CardDetailsComponent,
     AddTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    TestComponent,
+    AddTestComponent,
+    UpdateTestComponent,
    
     
 

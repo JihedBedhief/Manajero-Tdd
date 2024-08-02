@@ -13,6 +13,7 @@ import { StatisticsComponent } from './header/header/statistics/statistics/stati
 import { AddTaskComponent } from './Task/add-task/add-task.component';
 import { ListTasksComponent } from './Task/list-tasks/list-tasks.component';
 import { CardDetailsComponent } from './Task/card-details/card-details.component';
+import { TestComponent } from './header/header/testManager/test/test.component';
 
 const routes: Routes = [{
   path: '',
@@ -93,6 +94,7 @@ const routes: Routes = [{
         { path: 'add', component: AddTaskComponent },
         { path: 'listTasks', component: ListTasksComponent },
         { path: 'taskDetail', component: CardDetailsComponent },
+        { path: 'Test', component: TestComponent },
 
 
        
