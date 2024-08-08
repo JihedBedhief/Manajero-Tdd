@@ -10,10 +10,10 @@ import { ItemListComponent } from './dynamic/item-list/item-list.component';
 import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
 import { StatisticsComponent } from './header/header/statistics/statistics/statistics.component';
-import { AddTaskComponent } from './Task/add-task/add-task.component';
 import { ListTasksComponent } from './Task/list-tasks/list-tasks.component';
 import { CardDetailsComponent } from './Task/card-details/card-details.component';
 import { TestComponent } from './header/header/testManager/test/test.component';
+import { AddttComponent } from './Task/t/addtt/addtt.component';
 
 const routes: Routes = [{
   path: '',
@@ -91,7 +91,7 @@ const routes: Routes = [{
         { path: 'Tdd', component: TDDComponent },
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
-        { path: 'add', component: AddTaskComponent },
+        { path: 'add', component: AddttComponent },
         { path: 'listTasks', component: ListTasksComponent },
         { path: 'taskDetail', component: CardDetailsComponent },
         { path: 'Test', component: TestComponent },
@@ -100,17 +100,7 @@ const routes: Routes = [{
        
       ],
     },
-    {
-       path: 'task', component: ListTasksComponent ,
-      children: [
-        { path: 'add', component: AddTaskComponent },
-
-       
-
-
-       
-      ],
-    },
+  
     {
       path: '**',
       component: NotFoundComponent,

@@ -36,26 +36,25 @@ export class ListTasksComponent {
   constructor(private dialog: MatDialog) {}
 
   todo: Task[] = [
-    { name: 'Get to work', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
-    { name: 'Pick up groceries', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
-    { name: 'Go home', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' },
-    { name: 'Fall asleep', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: false }], status: 'todo' }
+    { name: 'Set up development environment', tests: [{ name: 'Install IDE', completed: false }, { name: 'Configure Linter', completed: false }], status: 'todo' },
+    { name: 'Gather project requirements', tests: [{ name: 'Client Interview', completed: false }, { name: 'Requirement Document', completed: false }], status: 'todo' },
+    { name: 'Design project architecture', tests: [{ name: 'Create UML diagrams', completed: false }, { name: 'Define Modules', completed: false }], status: 'todo' },
+    { name: 'Plan sprint tasks', tests: [{ name: 'Backlog Refinement', completed: false }, { name: 'Sprint Planning', completed: false }], status: 'todo' }
   ];
   
   inProgress: Task[] = [
-    { name: 'Work on project', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: true }], status: 'inProgress' },
-    { name: 'Study for exam', tests: [{ name: 'Test 1', completed: false }, { name: 'Test 2', completed: true }], status: 'inProgress' }
+    { name: 'Develop login module', tests: [{ name: 'Create UI', completed: false }, { name: 'Integrate Backend', completed: true }], status: 'inProgress' },
+    { name: 'Create database schema', tests: [{ name: 'Define Entities', completed: false }, { name: 'Set up Relationships', completed: true }], status: 'inProgress' }
   ];
   
   done: Task[] = [
-    { name: 'Get up', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
-    { name: 'Brush teeth', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
-    { name: 'Take a shower', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
-    { name: 'Check e-mail', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' },
-    { name: 'Walk dog', tests: [{ name: 'Test 1', completed: true }, { name: 'Test 2', completed: true }], status: 'done' }
+    { name: 'Initialize project repository', tests: [{ name: 'Create Repo', completed: true }, { name: 'Initial Commit', completed: true }], status: 'done' },
+    { name: 'Setup CI/CD pipeline', tests: [{ name: 'Create Build Script', completed: true }, { name: 'Integrate with GitHub Actions', completed: true }], status: 'done' },
+    { name: 'Write project documentation', tests: [{ name: 'Setup Wiki', completed: true }, { name: 'Document API', completed: true }], status: 'done' },
+    { name: 'Conduct code review', tests: [{ name: 'Review PRs', completed: true }, { name: 'Merge PRs', completed: true }], status: 'done' },
+    { name: 'Deploy to staging environment', tests: [{ name: 'Build Docker Image', completed: true }, { name: 'Deploy on Heroku', completed: true }], status: 'done' }
   ];
   
-
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

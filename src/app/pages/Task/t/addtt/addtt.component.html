@@ -1,0 +1,89 @@
+<div class="main-container">
+    <div class="form-container">
+      <h3 class="form-title mb-3">Add Task</h3>
+      <form [formGroup]="taskForm">
+        <nb-card class="mb-3">
+          <nb-card-header>Name</nb-card-header>
+          <nb-card-body>
+            <input id="name" formControlName="name" class="form-control" placeholder="Enter task name" />
+            <div *ngIf="taskForm.get('name').invalid && taskForm.get('name').touched" class="error-message">
+              Name is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Project</nb-card-header>
+          <nb-card-body>
+            <nb-select formControlName="project" placeholder="Select project">
+              <nb-option value="1">Project 1</nb-option>
+              <nb-option value="2">Project 2</nb-option>
+            </nb-select>
+            <div *ngIf="taskForm.get('project').invalid && taskForm.get('project').touched" class="error-message">
+              Project is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Assigned to</nb-card-header>
+          <nb-card-body>
+            <nb-select formControlName="assigned" placeholder="Select assignee">
+              <nb-option value="1">Neji Benazarti</nb-option>
+              <nb-option value="2">Ayoub Ben Brahim</nb-option>
+              <nb-option value="3">Bedhief Jihed</nb-option>
+            </nb-select>
+            <div *ngIf="taskForm.get('assigned').invalid && taskForm.get('assigned').touched" class="error-message">
+              Assigned is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Description</nb-card-header>
+          <nb-card-body>
+            <textarea id="description" formControlName="description" class="form-control" placeholder="Enter task description"></textarea>
+            <div *ngIf="taskForm.get('description').invalid && taskForm.get('description').touched" class="error-message">
+              Description is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Due date</nb-card-header>
+          <nb-card-body>
+            <input nbInput placeholder="Pick a due date" [nbDatepicker]="picker" formControlName="dueDate" />
+            <nb-datepicker #picker></nb-datepicker>
+            <div *ngIf="taskForm.get('dueDate').invalid && taskForm.get('dueDate').touched" class="error-message">
+              Due Date is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Comments</nb-card-header>
+          <nb-card-body>
+                <textarea id="comment" formControlName="comments" placeholder="Enter comment" class="form-control"></textarea>
+                <div *ngIf="taskForm.get('comments').invalid && taskForm.get('comments').touched" class="error-message">
+                  Comment is required
+                </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <nb-card class="mb-3">
+          <nb-card-header>Tests</nb-card-header>
+          <nb-card-body>
+            <nb-select formControlName="tests" multiple placeholder="Select tests">
+              <nb-option *ngFor="let test of tests" [value]="test.id">{{ test.title }}</nb-option>
+            </nb-select>
+            <div *ngIf="taskForm.get('tests').invalid && taskForm.get('tests').touched" class="error-message">
+              At least one test is required
+            </div>
+          </nb-card-body>
+        </nb-card>
+  
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Add Task Item</button>
+      </form>
+    </div>
+  </div>
+  

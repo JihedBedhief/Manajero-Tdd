@@ -55,8 +55,8 @@ export class TaskService {
     return this.http.get(BASE_URL+"api/task");
     
   }
-  addTask(taskdto:any):Observable<any>{
-    return this.http.post(BASE_URL+"api/task",taskdto);
+  addTask(taskdto:any,tests:any):Observable<any>{
+    return this.http.post(BASE_URL+`api/task/${tests}`,taskdto);
     
   }
   deleteTaskById(idTask : any):Observable<any>{
