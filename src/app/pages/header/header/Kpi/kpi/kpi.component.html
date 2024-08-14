@@ -1,0 +1,26 @@
+<div class="kpi-container">
+    <h2 class="kpi-title">Test KPIs</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="card-icon total-tests-icon"></div>
+        <h3>Total Tests</h3>
+        <p>{{ testKPIs.totalTests || 'Loading...' }}</p>
+      </div>
+      <div class="kpi-card">
+        <div class="card-icon passed-tests-icon"></div>
+        <h3>Passed Tests</h3>
+        <p>{{ testKPIs.passedTests || 'Loading...' }}</p>
+      </div>
+      <div class="kpi-card">
+        <div class="card-icon failed-tests-icon"></div>
+        <h3>Failed Tests</h3>
+        <p>{{ testKPIs.failedTests || 'Loading...' }}</p>
+      </div>
+      <div class="kpi-card">
+        <div class="card-icon pass-rate-icon"></div>
+        <h3>Test Pass Rate</h3>
+        <p>{{ testKPIs.testPassRate ? (testKPIs.testPassRate | number: '1.2-2') + '%' : 'Loading...' }}</p>
+      </div>
+    </div>
+  </div>
+  

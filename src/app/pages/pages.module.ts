@@ -12,7 +12,7 @@ import { LayoutRoutingModule } from './layout/layout-routing.module';
 import { StepperComponent } from './TDD/tdd/stepper/stepper.component';
 import { ItemListComponent } from './dynamic/item-list/item-list.component';
 import { AddSectionComponent } from './dynamic/AddSection/add-section/add-section.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from "@angular/material/dialog";
 import { UpdateSectionComponent } from './dynamic/UpdateSection/update-section/update-section.component';
 import { AddAccordionComponent } from './dynamic/AddAccordion/add-accordion/add-accordion.component';
@@ -35,6 +35,8 @@ import { TestComponent } from './header/header/testManager/test/test.component';
 import { AddTestComponent } from './header/header/testManager/test/AddTest/add-test/add-test.component';
 import { UpdateTestComponent } from './header/header/testManager/test/UpdateTest/update-test/update-test.component';
 import { AddttComponent } from './Task/t/addtt/addtt.component';
+import { ImageUploadComponent } from './dynamic/upload/image-upload/image-upload.component';
+import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
 
 
 
@@ -70,6 +72,8 @@ import { AddttComponent } from './Task/t/addtt/addtt.component';
     NbOptionModule,
     NbDatepickerModule.forRoot(),
     NbCheckboxModule,
+    FormsModule,
+
 
     
   ],
@@ -93,6 +97,8 @@ import { AddttComponent } from './Task/t/addtt/addtt.component';
     AddTestComponent,
     UpdateTestComponent,
     AddttComponent,
+    ImageUploadComponent,
+    KpiComponent,
    
     
 

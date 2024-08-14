@@ -14,6 +14,8 @@ import { ListTasksComponent } from './Task/list-tasks/list-tasks.component';
 import { CardDetailsComponent } from './Task/card-details/card-details.component';
 import { TestComponent } from './header/header/testManager/test/test.component';
 import { AddttComponent } from './Task/t/addtt/addtt.component';
+import { ImageUploadComponent } from './dynamic/upload/image-upload/image-upload.component';
+import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
 
 const routes: Routes = [{
   path: '',
@@ -87,7 +89,7 @@ const routes: Routes = [{
       component: HeaderComponent,
       children: [
         { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
-        { path: 'Statistics', component: StatisticsComponent },
+        { path: 'Statistics', component: KpiComponent },
         { path: 'Tdd', component: TDDComponent },
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
@@ -95,6 +97,8 @@ const routes: Routes = [{
         { path: 'listTasks', component: ListTasksComponent },
         { path: 'taskDetail', component: CardDetailsComponent },
         { path: 'Test', component: TestComponent },
+        { path: 'upload', component: ImageUploadComponent },
+
 
 
        

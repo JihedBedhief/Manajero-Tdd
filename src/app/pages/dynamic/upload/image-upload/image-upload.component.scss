@@ -1,0 +1,62 @@
+// Basic card styling
+nb-card {
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  // Styling for step content
+  .step-content {
+    padding: 20px;
+    text-align: center;
+  
+    // Add some spacing between elements
+    p {
+      margin-bottom: 15px;
+    }
+  
+    // Input styling
+    input[type="file"] {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    // Buttons styling
+    button {
+      margin: 5px;
+    }
+  }
+  
+  // Styling for example photo
+  .example-photo {
+    margin: 20px auto;
+    text-align: center;
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-style: italic;
+      color: #888;
+    }
+  }
+  
+  // Styling for review content
+  .review-content {
+    text-align: left;
+    margin-top: 20px;
+  }
+  
+  // Styling for validation result
+  .result {
+    font-weight: bold;
+    color: #28a745; // Green color for success messages
+  }
+  

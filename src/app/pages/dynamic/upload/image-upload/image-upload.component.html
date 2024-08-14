@@ -1,0 +1,56 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+  <nb-card-body>
+    <nb-stepper orientation="horizontal">
+      <!-- Step 1: Upload Photo -->
+      <nb-step [label]="step1Label">
+        <ng-template #step1Label>Step 1: Upload Photo</ng-template>
+        <div class="step-content">
+          <p>First, upload a high-quality PNG photo of your test results. Refer to the example below for guidance:</p>
+          <div class="example-photo">
+            <img src="/assets/images/A.png" alt="Example Test Photo" />
+            <p>Example Test Photo</p>
+          </div>
+          <input type="file" (change)="onFileSelected($event)" accept=".png" />
+          <button nbButton nbStepperNext>Next</button>
+        </div>
+      </nb-step>
+
+      <!-- Step 2: Enter Test Name -->
+      <nb-step [label]="step2Label">
+        <ng-template #step2Label>Step 2: Enter Test Name</ng-template>
+        <div class="step-content">
+          <p>Enter the name of the test you want to validate:</p>
+          <input type="text" [(ngModel)]="testName" placeholder="Enter test name" />
+          <button nbButton nbStepperPrevious>Previous</button>
+          <button nbButton nbStepperNext>Next</button>
+        </div>
+      </nb-step>
+
+      <!-- Step 3: Review and Submit -->
+      <nb-step [label]="step3Label">
+        <ng-template #step3Label>Step 3: Review and Submit</ng-template>
+        <div class="step-content">
+          <p>Review the uploaded photo and test name. Click 'Submit' to validate the test:</p>
+          <div class="review-content">
+            <p><strong>Test Name:</strong> {{ testName }}</p>
+            <p><strong>Selected File:</strong> {{ selectedFile?.name }}</p>
+          </div>
+          <button nbButton nbStepperPrevious>Previous</button>
+          <button nbButton (click)="submit()">Submit</button>
+        </div>
+      </nb-step>
+
+      <!-- Step 4: Validation Result -->
+      <nb-step [label]="step4Label">
+        <ng-template #step4Label>Step 4: Validation Result</ng-template>
+        <div class="step-content">
+          <p>Validation result will be displayed here:</p>
+          <div *ngIf="validationResult" class="result">
+            <p>{{ validationResult }}</p>
+          </div>
+          <button nbButton nbStepperPrevious>Previous</button>
+        </div>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>
