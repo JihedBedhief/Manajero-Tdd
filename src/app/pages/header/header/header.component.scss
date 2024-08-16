@@ -1,52 +1,94 @@
+/* Base styles for the navbar */
 .navbar {
-    background-color: #f8f9fa;
-    padding: 10px 20px;
-    border-bottom: 1px solid #dee2e6;
-    display: flex;
-    flex-direction: column;
-  }
-  
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles for the main menu and sub-menu */
+.navbar .main-menu,
+.navbar .sub-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row; /* Default layout for larger screens */
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Allow wrapping of menu items */
+}
+
+.navbar .main-menu {
+  margin-bottom: 10px;
+}
+
+.navbar .main-menu li,
+.navbar .sub-menu li {
+  margin-right: 20px;
+}
+
+.navbar .main-menu li a,
+.navbar .sub-menu li a {
+  text-decoration: none;
+  color: #6c757d;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .main-menu li a.active,
+.navbar .sub-menu li a.active {
+  color: #007bff;
+  background-color: #e9ecef;
+}
+
+.navbar .main-menu li a:hover,
+.navbar .sub-menu li a:hover {
+  background-color: #e9ecef;
+  color: #007bff;
+}
+
+/* Styles for the content area */
+.content {
+  padding: 20px;
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 1024px) {
   .navbar .main-menu,
   .navbar .sub-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
+    flex-direction: column; /* Stack menu items vertically */
   }
-  
-  .navbar .main-menu {
-    margin-bottom: 10px;
-  }
-  
+
   .navbar .main-menu li,
   .navbar .sub-menu li {
-    margin-right: 20px;
+    margin-right: 0; /* Remove right margin for vertical stacking */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
   }
-  
-  .navbar .main-menu li a,
-  .navbar .sub-menu li a {
-    text-decoration: none;
-    color: #6c757d;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s, color 0.3s;
+
+  .navbar .sub-menu {
+    display: block; /* Ensure the sub-menu is displayed */
+    margin-top: 10px; /* Space between main menu and sub-menu */
   }
-  
-  .navbar .main-menu li a.active,
-  .navbar .sub-menu li a.active {
-    color: #007bff;
-    background-color: #e9ecef;
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px; /* Adjust padding for very small screens */
   }
-  
-  .navbar .main-menu li a:hover,
-  .navbar .sub-menu li a:hover {
-    background-color: #e9ecef;
-    color: #007bff;
-  }
-  
+
   .content {
-    padding: 20px;
+    padding: 10px; /* Adjust padding for very small screens */
   }
-  
+
+  .navbar .sub-menu {
+    display: block; /* Ensure the sub-menu is displayed */
+  }
+
+  .navbar .sub-menu li {
+    margin-bottom: 5px; /* Reduce bottom margin for smaller screens */
+  }
+}

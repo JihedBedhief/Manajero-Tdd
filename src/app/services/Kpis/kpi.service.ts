@@ -7,11 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class KpiService {
   private apiUrl = 'http://localhost:9090/api/test';
+  private apiUrl2 = 'http://localhost:9090/api/task';
+
 
   constructor(private http: HttpClient) { }
 
   getTestKPIs(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/Kpis`);
   }
+
+  getTaskKPIs(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl2}/Kpis`);
+  }
+
 
 }

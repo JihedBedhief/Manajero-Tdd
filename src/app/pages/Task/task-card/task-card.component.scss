@@ -96,4 +96,68 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
       }
     }
   }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    padding: 15px;
+    font-size: 12px;
+
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      .card-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .card-status {
+        font-size: 10px;
+        padding: 2px 4px;
+      }
+    }
+
+    .card-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5px;
+      align-self: stretch;
+
+      button {
+        padding: 6px 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    font-size: 10px;
+
+    .card-header {
+      .card-title {
+        font-size: 12px;
+      }
+
+      .card-status {
+        font-size: 8px;
+        padding: 2px 3px;
+      }
+    }
+
+    .card-content {
+      .task-test {
+        font-size: 10px;
+        
+        input[type="checkbox"] {
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .card-actions {
+      button {
+        padding: 5px 8px;
+      }
+    }
+  }
 }

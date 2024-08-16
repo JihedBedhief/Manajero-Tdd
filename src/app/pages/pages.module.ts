@@ -38,6 +38,10 @@ import { AddttComponent } from './Task/t/addtt/addtt.component';
 import { ImageUploadComponent } from './dynamic/upload/image-upload/image-upload.component';
 import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartModule } from 'angular2-chartjs';
+import { AddProjectComponent } from './header/header/Project/AddProject/add-project/add-project.component';
+import { UpdateProjectComponent } from './header/header/Project/UpdateProject/update-project/update-project.component';
 
 
 
@@ -73,6 +77,7 @@ import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
     NbDatepickerModule.forRoot(),
     NbCheckboxModule,
     FormsModule,
+    ChartModule,
 
 
     
@@ -99,7 +104,8 @@ import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
     AddttComponent,
     ImageUploadComponent,
     KpiComponent,
-   
+    AddProjectComponent,
+    UpdateProjectComponent,
     
 
 

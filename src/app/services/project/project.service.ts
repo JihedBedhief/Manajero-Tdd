@@ -12,7 +12,7 @@ export class ProjectService {
 
   constructor(private http : HttpClient) { }
 
-  getProjects(){
+  getProjects():Observable<any>{
     return this.http.get(BASE_URL+"api/project");
   }
 

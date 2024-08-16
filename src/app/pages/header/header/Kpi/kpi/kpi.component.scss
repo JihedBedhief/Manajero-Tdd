@@ -77,3 +77,47 @@
     }
   }
   
+// Wrapper for the charts
+.chart-wrapper {
+  display: flex;
+  flex-wrap: wrap; // Allow charts to wrap on smaller screens
+  justify-content: space-between; // Distribute space evenly
+  margin: 20px; // Space around the chart container
+  gap: 20px; // Space between the charts
+}
+
+// Individual chart container with padding and background
+.chart-container {
+  flex: 1; // Allow the container to grow and shrink as needed
+  min-width: 300px; // Minimum width to ensure readability
+  max-width: 100%; // Prevent containers from exceeding the width of their parent
+  background-color: #ffffff; // White background for clarity
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  padding: 20px; // Space inside the chart container
+  box-sizing: border-box; // Include padding and border in element's total width and height
+}
+
+// Canvas styling for both charts
+canvas {
+  width: 100% !important; // Ensure canvas takes full width of its container
+  height: 300px !important; // Fixed height for consistency
+}
+
+// Media query for tablets and smaller devices
+@media (max-width: 1024px) {
+  .chart-wrapper {
+    flex-direction: column; // Stack charts vertically on tablets and smaller screens
+  }
+  .chart-container {
+    width: 100%; // Ensure each chart container takes full width
+    margin-bottom: 20px; // Add space between stacked charts
+  }
+}
+
+// Media query for very small screens (e.g., phones in portrait mode)
+@media (max-width: 480px) {
+  canvas {
+    height: 200px !important; // Adjust height for smaller screens
+  }
+}
