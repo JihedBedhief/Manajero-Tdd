@@ -1,22 +1,27 @@
 <div class="project-list-container">
-    <h2>Project List</h2>
-    <button class="btn add-btn" (click)="openAddProject()"><i class="fas fa-plus"></i></button>
-  
-    <div class="project-list">
-      <div *ngFor="let project of projects" class="project-item">
-        <div class="project-content">
-          <h3 class="project-name">{{ project.name }}</h3>
-          <p class="project-description">{{ project.description }}</p>
-          <p class="project-dates">
-            Start Date: {{ project.startDate | date: 'shortDate' }}<br>
-            End Date: {{ project.endDate | date: 'shortDate' }}
-          </p>
-        </div>
-        <div class="project-actions">
-          <button (click)="openUpdate(project.id)" class="btn update-btn"><i class="fas fa-edit"></i></button>
-          <button (click)="confirmDeleteProject(project.id)" class="btn delete-btn"><i class="fas fa-trash"></i></button>
-        </div>
+  <h2>Project List</h2>
+  <button class="btn add-btn" (click)="openAddProject()">
+    <i class="fas fa-plus"></i>
+  </button>
+
+  <div class="project-list">
+    <div *ngFor="let project of projects" class="project-item">
+      <div class="project-content">
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+        <p class="project-dates">
+          Start Date: {{ project.startDate | date: 'shortDate' }}<br>
+          End Date: {{ project.endDate | date: 'shortDate' }}
+        </p>
+      </div>
+      <div class="project-actions">
+        <button (click)="openUpdate(project.id)" class="btn update-btn">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button (click)="confirmDeleteProject(project.id)" class="btn delete-btn">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
     </div>
   </div>
-  
+</div>

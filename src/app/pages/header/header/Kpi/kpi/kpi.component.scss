@@ -1,123 +1,20 @@
-:root {
-    --primary-color: #007bff;
-    --background-color: #f8f9fa;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --card-border-radius: 8px;
-  }
-  
-  .kpi-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  
-    .kpi-title {
-      text-align: center;
-      margin-bottom: 30px;
-      color: var(--primary-color);
-      font-size: 2rem;
-      font-weight: bold;
+@import '../../../../../@theme/styles/themes.scss';
+
+@include nb-install-component() {
+  ngx-chartjs-pie,
+  ngx-chartjs-bar,
+  ngx-chartjs-line,
+  ngx-chartjs-multiple-xaxis,
+  ngx-chartjs-bar-horizontal,
+  ngx-chartjs-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+
+    ::ng-deep chart {
+      display: block;
+      height: 100%;
+      width: 100%;
     }
-  
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-  
-      .kpi-card {
-        background-color: var(--background-color);
-        border: 1px solid #ddd;
-        border-radius: var(--card-border-radius);
-        padding: 20px;
-        text-align: center;
-        box-shadow: var(--card-shadow);
-        transition: transform 0.3s, box-shadow 0.3s;
-        
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-  
-        .card-icon {
-          font-size: 3rem;
-          margin-bottom: 15px;
-          color: var(--primary-color);
-        }
-  
-        h3 {
-          margin-bottom: 10px;
-          font-size: 1.25rem;
-          color: #333;
-        }
-  
-        p {
-          font-size: 1.5rem;
-          color: #666;
-        }
-      }
-      
-      .total-tests-icon {
-        background: url('/assets/icons/total-tests.svg') no-repeat center center;
-        background-size: contain;
-      }
-  
-      .passed-tests-icon {
-        background: url('/assets/icons/passed-tests.svg') no-repeat center center;
-        background-size: contain;
-      }
-  
-      .failed-tests-icon {
-        background: url('/assets/icons/failed-tests.svg') no-repeat center center;
-        background-size: contain;
-      }
-  
-      .pass-rate-icon {
-        background: url('/assets/icons/pass-rate.svg') no-repeat center center;
-        background-size: contain;
-      }
-    }
-  }
-  
-// Wrapper for the charts
-.chart-wrapper {
-  display: flex;
-  flex-wrap: wrap; // Allow charts to wrap on smaller screens
-  justify-content: space-between; // Distribute space evenly
-  margin: 20px; // Space around the chart container
-  gap: 20px; // Space between the charts
-}
-
-// Individual chart container with padding and background
-.chart-container {
-  flex: 1; // Allow the container to grow and shrink as needed
-  min-width: 300px; // Minimum width to ensure readability
-  max-width: 100%; // Prevent containers from exceeding the width of their parent
-  background-color: #ffffff; // White background for clarity
-  border-radius: 8px; // Rounded corners
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
-  padding: 20px; // Space inside the chart container
-  box-sizing: border-box; // Include padding and border in element's total width and height
-}
-
-// Canvas styling for both charts
-canvas {
-  width: 100% !important; // Ensure canvas takes full width of its container
-  height: 300px !important; // Fixed height for consistency
-}
-
-// Media query for tablets and smaller devices
-@media (max-width: 1024px) {
-  .chart-wrapper {
-    flex-direction: column; // Stack charts vertically on tablets and smaller screens
-  }
-  .chart-container {
-    width: 100%; // Ensure each chart container takes full width
-    margin-bottom: 20px; // Add space between stacked charts
-  }
-}
-
-// Media query for very small screens (e.g., phones in portrait mode)
-@media (max-width: 480px) {
-  canvas {
-    height: 200px !important; // Adjust height for smaller screens
   }
 }

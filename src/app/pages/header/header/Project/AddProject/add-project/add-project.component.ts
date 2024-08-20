@@ -42,7 +42,7 @@ export class AddProjectComponent { // Updated component name
 
     console.log(formData);
 
-    this._projectService.AddProject(formData).subscribe((res) => { // Updated service method
+    this._projectService.AddProject(this.projectForm.value).subscribe((res) => { // Updated service method
       if (res.id !== null) {
         //this.router.navigateByUrl('/Projects'); // Optional: navigate to the list of projects or another relevant page
         this.reload();

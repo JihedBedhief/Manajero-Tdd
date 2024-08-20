@@ -20,7 +20,6 @@ import { AupdateAccordionComponent } from './dynamic/UpdateAccordion/aupdate-acc
 import { AddStepComponent } from './dynamic/AddStep/add-step/add-step.component';
 import { HeaderComponent } from './header/header/header.component';
 import { CalenderComponent } from './header/header/calender/calender/calender.component';
-import { ProjectComponent } from './Project/project.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -42,6 +41,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartModule } from 'angular2-chartjs';
 import { AddProjectComponent } from './header/header/Project/AddProject/add-project/add-project.component';
 import { UpdateProjectComponent } from './header/header/Project/UpdateProject/update-project/update-project.component';
+import { ChartjsMultipleXaxisComponent } from './header/header/Kpi/kpi/chartjs-multiple-xaxis.component';
+import { ChartjsLineComponent } from './header/header/Kpi/kpi/chartjs-line.component';
+import { ChartjsBarHorizontalComponent } from './header/header/Kpi/kpi/chartjs-bar-horizontal.component';
+import { ChartjsPieComponent } from './header/header/Kpi/kpi/chartjs-pie.component';
+import { ChartjsRadarComponent } from './header/header/Kpi/kpi/chartjs-radar.component';
+import { ChartjsBarComponent } from './header/header/Kpi/kpi/chartjs-bar.component';
+import { ProjectComponent } from './header/header/Project/project/project.component';
 
 
 
@@ -68,7 +74,6 @@ import { UpdateProjectComponent } from './header/header/Project/UpdateProject/up
     MatDialogModule,
     FullCalendarModule,
     DragDropModule,
-    CommonModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbCardModule,
@@ -78,6 +83,8 @@ import { UpdateProjectComponent } from './header/header/Project/UpdateProject/up
     NbCheckboxModule,
     FormsModule,
     ChartModule,
+    CommonModule,
+
 
 
     
@@ -92,7 +99,6 @@ import { UpdateProjectComponent } from './header/header/Project/UpdateProject/up
     AddAccordionComponent,
     AupdateAccordionComponent,
     AddStepComponent,
-    ProjectComponent,
     HeaderComponent,
     CalenderComponent,
     StatisticsComponent,
@@ -105,7 +111,14 @@ import { UpdateProjectComponent } from './header/header/Project/UpdateProject/up
     ImageUploadComponent,
     KpiComponent,
     AddProjectComponent,
+    ProjectComponent,
     UpdateProjectComponent,
+    ChartjsBarComponent,
+    ChartjsLineComponent,
+    ChartjsPieComponent,
+    ChartjsMultipleXaxisComponent,
+    ChartjsBarHorizontalComponent,
+    ChartjsRadarComponent,
     
 
 

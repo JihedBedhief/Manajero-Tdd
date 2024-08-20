@@ -25,6 +25,7 @@ export class ProjectComponent {
   getAlltest() {
     this._project.getProjects().subscribe(data => {
       this.projects = data;
+      console.log(this.projects);
     });
   }
 

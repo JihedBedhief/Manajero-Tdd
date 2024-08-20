@@ -3,21 +3,12 @@ import { KpiService } from '../../../../../services/Kpis/kpi.service';
 import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'ngx-chartjs-pie',
-  template: `
-    <div style="display: flex; justify-content: space-around;">
-      <div style="width: 45%;">
-        <canvas id="pieChart"></canvas>
-      </div>
-      <div style="width: 45%;">
-        <canvas id="barChart"></canvas>
-      </div>
-    </div>
-  `,
-  styleUrls: ['./kpi.component.scss'] // Ensure the SCSS file is linked here
+  selector: 'ngx-chartjs',
+  styleUrls: ['./kpi.component.scss'],
+  templateUrl: './kpi.component.html',
 })
-export class KpiComponent implements OnInit {
-  private pieChart: Chart | undefined;
+export class KpiComponent {
+ /* private pieChart: Chart | undefined;
   private barChart: Chart | undefined;
 
   constructor(private kpiService: KpiService) {}
@@ -123,5 +114,5 @@ export class KpiComponent implements OnInit {
       data: barData,
       options: barOptions
     });
-  }
+  }*/
 }

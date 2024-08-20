@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -18,6 +18,11 @@ export class KpiService {
 
   getTaskKPIs(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl2}/Kpis`);
+  }
+
+  getlineKPIs(entity: string): Observable<any> {
+    const params = new HttpParams().set('entity', entity);
+    return this.http.get<any>(this.apiUrl, { params });
   }
 
 
