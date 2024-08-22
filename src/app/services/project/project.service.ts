@@ -32,6 +32,10 @@ export class ProjectService {
   updateProject(id: number, projectdto : any):Observable<any>{
     return this.http.put(BASE_URL+`api/project/${id}`,projectdto);
   }
+  getProjectById(idProject : any):Observable<any>{
+    return this.http.get(BASE_URL+`api/project/${idProject}`
+    )
+  }
 
 
   getProjectsWithTaskCounts(): Observable<ProjectWithTaskCount[]> {

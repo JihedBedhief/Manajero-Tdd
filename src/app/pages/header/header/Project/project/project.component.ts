@@ -18,14 +18,13 @@ export class ProjectComponent {
   
   ngOnInit() {
   
-    this.getAlltest();
-
+    this.getAllProjects();
   }
 
   constructor(private _dialogue: MatDialog,private _project:ProjectService){
   }
 
-  getAlltest() {
+  getAllProjects() {
     this._project.getProjects().subscribe(data => {
       this.projects = data;
       console.log(this.projects);
@@ -47,15 +46,15 @@ export class ProjectComponent {
 
 
   
-  confirmDeleteTest(id: number) {
+  confirmDeleteProject(id: number) {
     if (window.confirm('Are you sure you want to delete this item?')) {
-      this.deleteTest(id);
+      this.deleteProject(id);
     }
   }
 
-  deleteTest(id: number) {
+  deleteProject(id: number) {
     this._project.deleteProjectById(id).subscribe(res => {
-      this.getAlltest();
+      this.getAllProjects();
     });
   }
 
