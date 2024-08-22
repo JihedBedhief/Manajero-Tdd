@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { KpiService } from '../../../../../services/Kpis/kpi.service';
 import { Chart } from 'chart.js';
+import * as html2pdf from 'html2pdf.js';
+import html2canvas from 'html2canvas';
+
+
 
 @Component({
   selector: 'ngx-chartjs',
@@ -8,111 +12,43 @@ import { Chart } from 'chart.js';
   templateUrl: './kpi.component.html',
 })
 export class KpiComponent {
- /* private pieChart: Chart | undefined;
-  private barChart: Chart | undefined;
 
-  constructor(private kpiService: KpiService) {}
+  kpis: any = {};
+
+  constructor(private kpiService: KpiService) { }
 
   ngOnInit(): void {
-    // Fetch both test and task KPIs
-    this.kpiService.getTestKPIs().subscribe(testData => {
-      this.kpiService.getTaskKPIs().subscribe(taskData => {
-        this.updateCharts(testData, taskData);
-      });
+    this.kpiService.getAllKPIs().subscribe(data => {
+      this.kpis = data;
+      console.log(data);
     });
   }
 
-  private updateCharts(testData: any, taskData: any): void {
-    // Pie chart for test KPIs
-    const totalTests = testData.totalTests || 0;
-    const passedTests = testData.passedTests || 0;
-    const failedTests = testData.failedTests || 0;
+  exportToPDF() {
+    const element = document.getElementById('contentToExport');
+    if (element) {
+      const options = {
+        margin: 1,
+        filename: 'kpis.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
 
-    const pieData = {
-      labels: ['Passed Tests', 'Failed Tests', 'Total Tests'],
-      datasets: [{
-        data: [passedTests, failedTests, totalTests],
-        backgroundColor: ['#007bff', '#0056b3', '#003d7a'] // Different shades of blue
-      }]
-    };
-
-    const pieOptions = {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        tooltip: {
-          callbacks: {
-            label: function(tooltipItem: any) {
-              return `${tooltipItem.label}: ${tooltipItem.raw}`;
-            }
-          }
-        }
-      }
-    };
-
-    if (this.pieChart) {
-      this.pieChart.destroy();
+      html2pdf().from(element).set(options).save();
     }
-
-    this.pieChart = new Chart('pieChart', {
-      type: 'pie',
-      data: pieData,
-      options: pieOptions
-    });
-
-    // Bar chart for task KPIs
-    const toDoTasks = taskData.toDoTasks || 0;
-    const inProgressTasks = taskData.inProgressTasks || 0;
-    const doneTasks = taskData.doneTasks || 0;
-
-    const barData = {
-      labels: ['To Do', 'In Progress', 'Done'],
-      datasets: [{
-        data: [toDoTasks, inProgressTasks, doneTasks],
-        backgroundColor: ['#007bff', '#0056b3', '#003d7a'], // Shades of blue
-        borderColor: '#003d7a',
-        borderWidth: 1
-      }]
-    };
-
-    const barOptions = {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-        },
-        tooltip: {
-          callbacks: {
-            label: function(tooltipItem: any) {
-              return `${tooltipItem.label}: ${tooltipItem.raw}`;
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          beginAtZero: true,
-          grid: {
-            display: false
-          }
-        },
-        y: {
-          beginAtZero: true
-        }
-      }
-    };
-
-    if (this.barChart) {
-      this.barChart.destroy();
+  }
+  exportToPNG() {
+    const element = document.getElementById('contentToExport');
+    if (element) {
+      html2canvas(element).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'kpis.png';
+        link.click();
+      });
     }
+  }
 
-    this.barChart = new Chart('barChart', {
-      type: 'bar',
-      data: barData,
-      options: barOptions
-    });
-  }*/
 }

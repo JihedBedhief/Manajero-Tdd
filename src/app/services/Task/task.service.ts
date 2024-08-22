@@ -16,6 +16,11 @@ export interface Task {
   tests: Test[];
 }
 
+export interface ColabWithTaskCount {
+  assigned: string;
+  taskCount: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -68,6 +73,9 @@ export class TaskService {
   getTaskById(idTask : any):Observable<any>{
     return this.http.get(BASE_URL+`api/task/${idTask}`
     )
+  }
+  getProjectsWithTaskCounts(): Observable<ColabWithTaskCount[]> {
+    return this.http.get<ColabWithTaskCount[]>(BASE_URL+"api/task/with-task-counts");
   }
 
 

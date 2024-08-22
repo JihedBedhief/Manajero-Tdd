@@ -12,11 +12,14 @@ import { UpdateProjectComponent } from '../UpdateProject/update-project/update-p
 export class ProjectComponent {
 
   projects: any[] = [];
+  t: any[] = [];
+
 
   
   ngOnInit() {
   
     this.getAlltest();
+
   }
 
   constructor(private _dialogue: MatDialog,private _project:ProjectService){
@@ -28,6 +31,7 @@ export class ProjectComponent {
       console.log(this.projects);
     });
   }
+
 
   openAddProject() {
     this._dialogue.open(AddProjectComponent);

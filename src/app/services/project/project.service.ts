@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
+export interface ProjectWithTaskCount {
+  name: string;
+  taskCount: number;
+}
 
 const BASE_URL ="http://localhost:9090/";
 @Injectable({
@@ -29,5 +33,9 @@ export class ProjectService {
     return this.http.put(BASE_URL+`api/project/${id}`,projectdto);
   }
 
+
+  getProjectsWithTaskCounts(): Observable<ProjectWithTaskCount[]> {
+    return this.http.get<ProjectWithTaskCount[]>(BASE_URL+"api/project/with-task-counts");
+  }
 
 }

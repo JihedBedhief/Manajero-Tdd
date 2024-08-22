@@ -19,6 +19,9 @@ export class KpiService {
   getTaskKPIs(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl2}/Kpis`);
   }
+  getAllKPIs(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl2}/AllKpis`);
+  }
 
   getlineKPIs(entity: string): Observable<any> {
     const params = new HttpParams().set('entity', entity);

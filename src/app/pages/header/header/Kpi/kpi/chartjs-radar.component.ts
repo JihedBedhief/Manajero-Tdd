@@ -1,64 +1,100 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService, NbColorHelper } from '@nebular/theme';
+import { ColabWithTaskCount, TaskService } from '../../../../../services/Task/task.service';
 
 @Component({
   selector: 'ngx-chartjs-radar',
   template: `
-    <chart type="radar" [data]="data" [options]="options"></chart>
+    <chart type="horizontalBar" [data]="data" [options]="options"></chart>
   `,
 })
-export class ChartjsRadarComponent implements OnDestroy {
+export class ChartjsRadarComponent implements OnInit,OnDestroy {
+  data: any;
   options: any;
-  data: {};
   themeSubscription: any;
+  projects: ColabWithTaskCount[] = []; // Store projects data
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private task: TaskService) {}
+
+  ngOnInit(): void {
+    this.loadProjectData();
+  }
+
+  ngOnDestroy(): void {
+    if (this.themeSubscription) {
+      this.themeSubscription.unsubscribe();
+    }
+  }
+
+  private loadProjectData(): void {
+    this.task.getProjectsWithTaskCounts().subscribe(
+      (projects) => {
+        this.projects = projects;
+        this.updateChart();
+      },
+      (error) => {
+        console.error('Error fetching project data', error);
+      }
+    );
+  }
+
+  private updateChart(): void {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
+      const projectNames = this.projects.map(project => project.assigned);
+      const taskCounts = this.projects.map(project => project.taskCount);
+
       this.data = {
-        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+        labels: projectNames,
         datasets: [{
-          data: [65, 59, 90, 81, 56, 55, 40],
-          label: 'Series A',
-          borderColor: colors.danger,
-          backgroundColor: NbColorHelper.hexToRgbA(colors.dangerLight, 0.5),
-        }, {
-          data: [28, 48, 40, 19, 96, 27, 100],
-          label: 'Series B',
-          borderColor: colors.warning,
-          backgroundColor: NbColorHelper.hexToRgbA(colors.warningLight, 0.5),
+          label: 'Number of Tasks',
+          backgroundColor: colors.infoLight,
+          borderWidth: 1,
+          data: taskCounts,
         }],
       };
 
       this.options = {
         responsive: true,
         maintainAspectRatio: false,
-        scaleFontColor: 'white',
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: chartjs.axisLineColor,
+              },
+              ticks: {
+                fontColor: chartjs.textColor,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                display: false,
+                color: chartjs.axisLineColor,
+              },
+              ticks: {
+                fontColor: chartjs.textColor,
+              },
+            },
+          ],
+        },
         legend: {
+          position: 'right',
           labels: {
             fontColor: chartjs.textColor,
           },
         },
-        scale: {
-          pointLabels: {
-            fontSize: 14,
-            fontColor: chartjs.textColor,
-          },
-          gridLines: {
-            color: chartjs.axisLineColor,
-          },
-          angleLines: {
-            color: chartjs.axisLineColor,
-          },
-        },
       };
     });
-  }
-
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
   }
 }

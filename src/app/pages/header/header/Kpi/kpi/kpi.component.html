@@ -1,4 +1,41 @@
-<div class="row">
+<!-- Buttons to Export -->
+<button nbButton (click)="exportToPDF()">Export to PDF</button>
+<button nbButton (click)="exportToPNG()">Export to PNG</button>
+
+<!-- Content to Export -->
+<div id="contentToExport" class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Total Tasks </nb-card-header>
+      <nb-card-body>
+        <p>{{ kpis.totalTasks }}</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Total Tests </nb-card-header>
+      <nb-card-body>
+        <p>{{ kpis.totalTests }}</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Task Pass Rate (%)</nb-card-header>
+      <nb-card-body>
+        <p>{{ kpis.completionRate | number:'1.2-2' }}%</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Test Pass Rate (%) </nb-card-header>
+      <nb-card-body>
+        <p>{{ kpis.completionRatetest | number:'1.2-2' }}%</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
   <div class="col-lg-6">
     <nb-card>
       <nb-card-header>Test </nb-card-header>
@@ -17,23 +54,7 @@
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Line</nb-card-header>
-      <nb-card-body>
-        <ngx-chartjs-line></ngx-chartjs-line>
-      </nb-card-body>
-    </nb-card>
-  </div>
-  <div class="col-lg-6">
-    <nb-card>
-      <nb-card-header>Multiple x-axis</nb-card-header>
-      <nb-card-body>
-        <ngx-chartjs-multiple-xaxis></ngx-chartjs-multiple-xaxis>
-      </nb-card-body>
-    </nb-card>
-  </div>
-  <div class="col-lg-6">
-    <nb-card>
-      <nb-card-header>Bar Horizontal</nb-card-header>
+      <nb-card-header>Project by tasks</nb-card-header>
       <nb-card-body>
         <ngx-chartjs-bar-horizontal></ngx-chartjs-bar-horizontal>
       </nb-card-body>
@@ -41,7 +62,7 @@
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Radar</nb-card-header>
+      <nb-card-header>Colaborator by tasks</nb-card-header>
       <nb-card-body>
         <ngx-chartjs-radar></ngx-chartjs-radar>
       </nb-card-body>

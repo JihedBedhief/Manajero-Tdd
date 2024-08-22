@@ -1,5 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { ProjectService, ProjectWithTaskCount } from '../../../../../services/project/project.service';
 
 @Component({
   selector: 'ngx-chartjs-bar-horizontal',
@@ -7,30 +8,52 @@ import { NbThemeService } from '@nebular/theme';
     <chart type="horizontalBar" [data]="data" [options]="options"></chart>
   `,
 })
-export class ChartjsBarHorizontalComponent implements OnDestroy {
+export class ChartjsBarHorizontalComponent implements OnInit, OnDestroy {
   data: any;
   options: any;
   themeSubscription: any;
+  projects: ProjectWithTaskCount[] = []; // Store projects data
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private projectService: ProjectService) {}
+
+  ngOnInit(): void {
+    this.loadProjectData();
+  }
+
+  ngOnDestroy(): void {
+    if (this.themeSubscription) {
+      this.themeSubscription.unsubscribe();
+    }
+  }
+
+  private loadProjectData(): void {
+    this.projectService.getProjectsWithTaskCounts().subscribe(
+      (projects) => {
+        this.projects = projects;
+        this.updateChart();
+      },
+      (error) => {
+        console.error('Error fetching project data', error);
+      }
+    );
+  }
+
+  private updateChart(): void {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
+      const projectNames = this.projects.map(project => project.name);
+      const taskCounts = this.projects.map(project => project.taskCount);
+
       this.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        labels: projectNames,
         datasets: [{
-            label: 'Dataset 1',
-            backgroundColor: colors.infoLight,
-            borderWidth: 1,
-            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          }, {
-            label: 'Dataset 2',
-            backgroundColor: colors.successLight,
-            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          },
-        ],
+          label: 'Number of Tasks',
+          backgroundColor: colors.infoLight,
+          borderWidth: 1,
+          data: taskCounts,
+        }],
       };
 
       this.options = {
@@ -73,13 +96,5 @@ export class ChartjsBarHorizontalComponent implements OnDestroy {
         },
       };
     });
-  }
-
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
-  }
-
-  private random() {
-    return Math.round(Math.random() * 100);
   }
 }

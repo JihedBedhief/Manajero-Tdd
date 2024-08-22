@@ -12,12 +12,14 @@
           </nb-card-body>
         </nb-card>
   
+
+            
         <nb-card class="mb-3">
           <nb-card-header>Project</nb-card-header>
           <nb-card-body>
             <nb-select formControlName="project" placeholder="Select project">
-              <nb-option value="1">Project 1</nb-option>
-              <nb-option value="2">Project 2</nb-option>
+              <nb-option *ngFor="let proj of projects" [value]="proj.id">{{ proj.name }}</nb-option>
+
             </nb-select>
             <div *ngIf="taskForm.get('project').invalid && taskForm.get('project').touched" class="error-message">
               Project is required
@@ -29,9 +31,9 @@
           <nb-card-header>Assigned to</nb-card-header>
           <nb-card-body>
             <nb-select formControlName="assigned" placeholder="Select assignee">
-              <nb-option value="1">Neji Benazarti</nb-option>
-              <nb-option value="2">Ayoub Ben Brahim</nb-option>
-              <nb-option value="3">Bedhief Jihed</nb-option>
+              <nb-option value="Neji Benazarti">Neji Benazarti</nb-option>
+              <nb-option value="Ayoub Ben Brahim">Ayoub Ben Brahim</nb-option>
+              <nb-option value="Bedhief Jihed">Bedhief Jihed</nb-option>
             </nb-select>
             <div *ngIf="taskForm.get('assigned').invalid && taskForm.get('assigned').touched" class="error-message">
               Assigned is required
@@ -69,6 +71,8 @@
                 </div>
           </nb-card-body>
         </nb-card>
+
+    
   
         <nb-card class="mb-3">
           <nb-card-header>Tests</nb-card-header>

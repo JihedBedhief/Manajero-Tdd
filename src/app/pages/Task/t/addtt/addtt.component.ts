@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { NbDateService } from '@nebular/theme';
 import { TaskService } from '../../../../services/Task/task.service';
 import { TestService } from '../../../../services/Test/test.service';
+import { ProjectService } from '../../../../services/project/project.service';
 
 @Component({
   selector: 'ngx-addtt',
@@ -14,12 +15,14 @@ export class AddttComponent {
   taskItems: any[] = [];
   taskForm: FormGroup;
   tests: any[] = [];
+  projects: any[] = [];
+
   
 
   min: Date;
   max: Date;
 
-  constructor(private _task: TaskService, private fb: FormBuilder,private _test: TestService,
+  constructor(private _task: TaskService, private fb: FormBuilder,private _test: TestService,private _project : ProjectService,
     protected dateService: NbDateService<Date>) {
     this.taskForm = this.fb.group({
       
@@ -36,11 +39,18 @@ export class AddttComponent {
 
   ngOnInit(): void {
     this.loadTaskItems();
+    this.loadProjects();
+
   }
 
   loadTaskItems(): void {
     this._test.getTest().subscribe(data => {
       this.tests = data;
+    });
+  }
+  loadProjects(): void {
+    this._project.getProjects().subscribe(data => {
+      this.projects = data;
     });
   }
 
@@ -51,6 +61,12 @@ export class AddttComponent {
   addCommentField(): void {
     this.comments.push(this.fb.control(''));
   }
+
+  reload (){
+    location.reload();
+  }
+
+
 
   onSubmit(): void {
    //   const formData: FormData = new FormData();
@@ -74,7 +90,7 @@ export class AddttComponent {
       this._task.addTask(formData,selectedTests).subscribe((res) => {
         if (res.id !== null) {
           //this.router.navigateByUrl('/Items');
-        //  this.reload();
+          this.reload();
         } else {
           console.log(res);
         }
