@@ -1,1 +1,49 @@
-<p>update-project works!</p>
+<div class="container">
+    <h3 class="h3 mb-3 fw-normal">Update Project</h3>
+    <form [formGroup]="ProjectForm" (ngSubmit)="updateProject()">
+      <div id="form">
+  
+        <div class="row">
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="name" type="text" placeholder="" class="form-control">
+              <label for="name">Title</label>
+              <mat-error *ngIf="ProjectForm.get('name')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+              <textarea matInput formControlName="description" placeholder="" class="form-control"></textarea>
+              <label for="description">Description</label>
+              <mat-error *ngIf="ProjectForm.get('description')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="startDate" type="date" placeholder="" class="form-control">
+              <label for="startDate">Start Date</label>
+              <mat-error *ngIf="ProjectForm.get('startDate')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-floating mb-3">
+              <input matInput formControlName="endDate" type="date" placeholder="" class="form-control">
+              <label for="endDate">End Date</label>
+              <mat-error *ngIf="ProjectForm.get('endDate')?.hasError('required')">
+                This input is required!
+              </mat-error>
+            </div>
+          </div>
+        </div>
+  
+        <button class="btn btn-lg btn-primary" type="submit">Update Project</button>
+      </div>
+    </form>
+  </div>
+  
