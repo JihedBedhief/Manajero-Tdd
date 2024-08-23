@@ -43,6 +43,9 @@ export class TaskService {
     return this.http.get<Task[]>(BASE_URL+`api/task/tasks/${id}`)
   }
 
+  EditTaskStatus(status:any,id:string):Observable<any>{
+    return this.http.patch(BASE_URL+`api/task/task/status/${id}`,status);
+  }
   getTotalTasks(): number {
     return this.tasks.length;
   }
@@ -70,4 +73,6 @@ export class TaskService {
   getInProgressTests(): number {
     return this.tasks.reduce((total, task) => total + task.tests.filter(test => !test.completed).length, 0);
   }
+
+
 }

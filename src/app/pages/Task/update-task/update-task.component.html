@@ -3,51 +3,94 @@
   <form [formGroup]="taskForm" (ngSubmit)="updateTask()">
     <div id="form">
       <div class="row">
+        <!-- Name Field -->
         <div class="col-6">
           <div class="form-floating mb-3">
-            <input matInput formControlName="name" type="text" placeholder="" class="form-control">
+            <input
+              matInput
+              formControlName="name"
+              type="text"
+              placeholder=""
+              class="form-control"
+            />
             <label for="title">Name</label>
             <mat-error *ngIf="taskForm.get('name')?.hasError('required')">
               This input is required!
             </mat-error>
           </div>
         </div>
+
+        <!-- Project Field -->
         <div class="col-6">
           <div class="form-floating mb-3">
-            <input matInput formControlName="project" type="text" placeholder="" class="form-control">
+            <input
+              matInput
+              formControlName="project"
+              type="text"
+              placeholder=""
+              class="form-control"
+            />
             <label for="project">Project</label>
             <mat-error *ngIf="taskForm.get('project')?.hasError('required')">
               This input is required!
             </mat-error>
           </div>
         </div>
+
+        <!-- Assigned Field -->
         <div class="col-6">
           <div class="form-floating mb-3">
-            <input matInput formControlName="assigned" type="text" placeholder="" class="form-control">
+            <input
+              matInput
+              formControlName="assigned"
+              type="text"
+              placeholder=""
+              class="form-control"
+            />
             <label for="assigned">Assigned</label>
             <mat-error *ngIf="taskForm.get('assigned')?.hasError('required')">
               This input is required!
             </mat-error>
           </div>
         </div>
+
+        <!-- Description Field -->
         <div class="col-6">
           <div class="form-floating mb-3">
-            <textarea matInput formControlName="description" placeholder="" class="form-control"></textarea>
+            <textarea
+              matInput
+              formControlName="description"
+              placeholder=""
+              class="form-control"
+            ></textarea>
             <label for="description">Description</label>
-            <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+            <mat-error
+              *ngIf="taskForm.get('description')?.hasError('required')"
+            >
               This input is required!
             </mat-error>
           </div>
         </div>
+
+        <!-- Due Date Field -->
         <div class="col-6">
-  <div class="form-floating mb-3">
-    <input matInput formControlName="dueDate" [value]="taskForm.get('dueDate')?.value | date:'yyyy-MM-dd'" type="date" placeholder="" class="form-control">
-    <label for="dueDate">Due Date</label>
-    <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
-      This input is required!
-    </mat-error>
-  </div>
-</div>
+          <div class="form-floating mb-3">
+            <input
+              matInput
+              formControlName="dueDate"
+              [value]="taskForm.get('dueDate')?.value | date : 'yyyy-MM-dd'"
+              type="date"
+              placeholder=""
+              class="form-control"
+            />
+            <label for="dueDate">Due Date</label>
+            <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+              This input is required!
+            </mat-error>
+          </div>
+        </div>
+
+
         <div class="col-6">
           <div class="form-floating mb-3">
             <nb-select formControlName="status">
@@ -59,11 +102,27 @@
             <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
               This input is required!
             </mat-error>
+
+        
+            <button
+              class="btn btn-sm btn-secondary mt-3"
+              type="button"
+              (click)="updateTaskStatus()"
+            >
+              Update Status
+            </button>
           </div>
         </div>
+
+        <!-- Comments Field -->
         <div class="col-12">
           <div class="form-floating mb-3">
-            <textarea matInput formControlName="comments" placeholder="" class="form-control"></textarea>
+            <textarea
+              matInput
+              formControlName="comments"
+              placeholder=""
+              class="form-control"
+            ></textarea>
             <label for="comments">Comments</label>
             <mat-error *ngIf="taskForm.get('comments')?.hasError('required')">
               This input is required!
@@ -72,6 +131,7 @@
         </div>
       </div>
 
+      <!-- Update Task Button -->
       <button class="btn btn-lg btn-primary" type="submit">Update Task</button>
     </div>
   </form>

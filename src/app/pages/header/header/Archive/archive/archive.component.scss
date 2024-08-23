@@ -7,6 +7,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   max-width: 1200px;
+  overflow-x: auto;
 
   h2 {
     font-size: 1.75em;
@@ -20,6 +21,7 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; // Ensures the table columns are evenly distributed
 
     thead {
       background-color: #ecf0f1;
@@ -30,6 +32,7 @@
         text-align: left;
         font-weight: 600;
         border-bottom: 2px solid #bdc3c7;
+        white-space: nowrap; // Prevents text from wrapping in table headers
       }
     }
 
@@ -46,6 +49,10 @@
       td {
         padding: 15px;
         border-bottom: 1px solid #bdc3c7;
+        word-wrap: break-word; // Ensures long text wraps within the cell
+        white-space: nowrap; // Prevents text from wrapping in table cells
+        overflow: hidden;
+        text-overflow: ellipsis; // Adds ellipsis for overflowed text
       }
     }
   }
@@ -95,7 +102,7 @@
   }
 }
 
-// Responsive design
+// Responsive design for medium screens
 @media (max-width: 768px) {
   .table-container {
     padding: 15px;
@@ -110,7 +117,52 @@
   }
 }
 
+// Responsive design for small screens
 @media (max-width: 480px) {
+  .table-container {
+    padding: 10px;
+
+    h2 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    table {
+      font-size: 12px;
+
+      th, td {
+        padding: 8px;
+      }
+
+      thead {
+        display: none; // Hide table headers for small screens
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 10px;
+          border-bottom: 2px solid #e0e0e0;
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 50%;
+            position: relative;
+
+            &::before {
+              content: attr(data-label); // Add labels before each cell
+              position: absolute;
+              left: 10px;
+              white-space: nowrap;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .pagination {
     flex-direction: column;
 
@@ -125,6 +177,7 @@
     .page-info {
       margin: 10px 0;
       font-size: 14px;
+      text-align: center;
     }
   }
 }

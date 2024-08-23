@@ -1,46 +1,52 @@
-.update-task-container {
-    max-width: 600px; /* Adjust the width as needed */
-    margin: auto;
-    padding: 1rem;
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-    height: 80vh; /* Set height to 80% of the viewport height */
-  
-    h3 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-  
-    nb-card {
-      margin-bottom: 1rem;
-      width: 100%;
-      
-      nb-card-header {
-        font-weight: bold;
+  .update-task-container {
+      max-width: 600px; /* Adjust the width as needed */
+      margin: auto;
+      padding: 1rem;
+      overflow-y: auto; /* Enable vertical scrolling if content overflows */
+      height: 80vh; /* Set height to 80% of the viewport height */
+    
+      h3 {
+        text-align: center;
+        margin-bottom: 1rem;
       }
-  
-      nb-card-body {
+    
+      nb-card {
+        margin-bottom: 1rem;
+        width: 100%;
+        
+        nb-card-header {
+          font-weight: bold;
+        }
+    
+        nb-card-body {
+          padding: 0.75rem;
+        }
+      }
+    
+      .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    
+      .error-message {
+        color: red;
+        font-size: 0.875rem;
+      }
+    
+      .btn {
+        width: 100%;
         padding: 0.75rem;
       }
-    }
-  
-    .form-control {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    .error-message {
-      color: red;
+    
+      /* Add styles for the modal container to ensure it doesn't exceed the viewport width */
+      :host ::ng-deep .mat-dialog-container {
+        max-width: 80vw !important;
+      }
+    }  
+    
+    .btn-sm {
+      padding: 0.5rem 1rem;
       font-size: 0.875rem;
     }
-  
-    .btn {
-      width: 100%;
-      padding: 0.75rem;
-    }
-  
-    /* Add styles for the modal container to ensure it doesn't exceed the viewport width */
-    :host ::ng-deep .mat-dialog-container {
-      max-width: 80vw !important;
-    }
-  }  
+    
