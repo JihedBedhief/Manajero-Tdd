@@ -1,20 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Task,Test } from '../../pages/Models/Task';
+
+
 
 const BASE_URL ="http://localhost:9090/";
-export interface Test {
-  id: number;
-  description: string;
-  completed: boolean;
-}
 
-export interface Task {
-  id: number;
-  title: string;
-  status: 'completed' | 'just-started' | 'in-progress';
-  tests: Test[];
-}
 
 export interface ColabWithTaskCount {
   assigned: string;
@@ -25,35 +17,9 @@ export interface ColabWithTaskCount {
   providedIn: 'root',
 })
 export class TaskService {
+  
   constructor(private http : HttpClient) { }
   tasks: Task[] = [
-    {
-      id: 1,
-      title: 'Task 1',
-      status: 'just-started',
-      tests: [
-        { id: 1, description: 'Test 1', completed: false },
-        { id: 2, description: 'Test 2', completed: false },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Task 2',
-      status: 'in-progress',
-      tests: [
-        { id: 1, description: 'Test 1', completed: true },
-        { id: 2, description: 'Test 2', completed: false },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Task 3',
-      status: 'completed',
-      tests: [
-        { id: 1, description: 'Test 1', completed: true },
-        { id: 2, description: 'Test 2', completed: true },
-      ],
-    },
   ];
 
   getTask():Observable<any>{
@@ -78,21 +44,24 @@ export class TaskService {
     return this.http.get<ColabWithTaskCount[]>(BASE_URL+"api/task/with-task-counts");
   }
 
+  getTaskByProjectId(id:string):Observable<Task[]>{
+    return this.http.get<Task[]>(BASE_URL+`api/task/tasks/${id}`)
+  }
 
   getTotalTasks(): number {
     return this.tasks.length;
   }
 
   getCompletedTasks(): number {
-    return this.tasks.filter(task => task.status === 'completed').length;
+    return this.tasks.filter(task => task.status === 'done').length;
   }
 
   getInProgressTasks(): number {
-    return this.tasks.filter(task => task.status === 'in-progress').length;
+    return this.tasks.filter(task => task.status === 'in Progress').length;
   }
 
   getJustStartedTasks(): number {
-    return this.tasks.filter(task => task.status === 'just-started').length;
+    return this.tasks.filter(task => task.status === 'To do').length;
   }
 
   getTotalTests(): number {

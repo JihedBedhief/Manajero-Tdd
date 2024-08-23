@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';  // Import CommonModule
 import { FormsModule } from '@angular/forms';    // Import FormsModule
-import { Task } from '../list-tasks/list-tasks.component';
+import { Task } from '../../Models/Task';
 
 
 @Component({
@@ -39,9 +39,9 @@ export class TaskCardComponent {
     if (this.task.tests.every(test => test.completed)) {
       this.task.status = 'done';
     } else if (this.task.tests.some(test => test.completed)) {
-      this.task.status = 'inProgress';
+      this.task.status = 'in Progress';
     } else {
-      this.task.status = 'todo';
+      this.task.status = 'To do';
     }
   }
 }

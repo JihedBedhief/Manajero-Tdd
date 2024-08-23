@@ -6,6 +6,11 @@
 
   <div class="project-list">
     <div *ngFor="let project of projects" class="project-item">
+      <div class="project-header">
+        <button  [routerLink]="['projects/',project.id, 'tasks']" class="btn view-tasks-btn">
+          <i class="fas fa-tasks"></i> View Tasks
+        </button>
+      </div>
       <div class="project-content">
         <h3 class="project-name">{{ project.name }}</h3>
         <p class="project-description">{{ project.description }}</p>

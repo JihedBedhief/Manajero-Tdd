@@ -95,16 +95,12 @@ const routes: Routes = [{
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
         { path: 'add', component: AddttComponent },
-        { path: 'listTasks', component: ListTasksComponent },
+        //{ path: 'listTasks', component: ListTasksComponent },
         { path: 'taskDetail', component: CardDetailsComponent },
         { path: 'Test', component: TestComponent },
         { path: 'upload', component: ImageUploadComponent },
         { path: 'Project', component: ProjectComponent },
-
-
-
-
-       
+        { path: 'Project/projects/:id/tasks', component: ListTasksComponent },
       ],
     },
   
