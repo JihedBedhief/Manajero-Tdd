@@ -5,7 +5,7 @@ import { NbDateService } from '@nebular/theme';
 
 interface Task {
   name: string;
-  project: string;
+  project: any;
   assigned: string[];
   description: string;
   dueDate: Date;
@@ -28,8 +28,9 @@ export class CardDetailsComponent {
   constructor(
     private fb: FormBuilder, protected dateService: NbDateService<Date>,
     public dialogRef: MatDialogRef<CardDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { item: Task }
+    @Inject(MAT_DIALOG_DATA) public data: { task: Task }
   ) {
+    console.log(data.task);
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       'Due Date': [''],
@@ -37,15 +38,7 @@ export class CardDetailsComponent {
     });
 
     // Initialize the task property with some data
-    this.task = {
-      name: 'Task 1',
-      project: 'Project 1',
-      assigned: ['User 1', 'User 2'],
-      description: 'This is a sample task description.',
-      dueDate: new Date(),
-      status: 'In Progress',
-      comments: 'These are some comments.'
-    };
+    this.task = this.data.task ;
   }
 
   onClose(): void {

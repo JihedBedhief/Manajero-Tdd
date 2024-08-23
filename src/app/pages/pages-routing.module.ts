@@ -18,6 +18,7 @@ import { ImageUploadComponent } from './dynamic/upload/image-upload/image-upload
 import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
 import { ProjectComponent } from './header/header/Project/project/project.component';
 import { ArchiveComponent } from './header/header/Archive/archive/archive.component';
+import { ProjectsComponent } from './Project/project.component';
 
 const routes: Routes = [{
   path: '',
@@ -96,13 +97,13 @@ const routes: Routes = [{
         { path: 'dynamic', component: ItemListComponent },
         { path: 'Calender', component: CalenderComponent },
         { path: 'add', component: AddttComponent },
-        //{ path: 'listTasks', component: ListTasksComponent },
+        { path: 'listTasks', component: ProjectsComponent },
         { path: 'taskDetail', component: CardDetailsComponent },
         { path: 'Test', component: TestComponent },
         { path: 'upload', component: ImageUploadComponent },
         { path: 'Project', component: ProjectComponent },
         { path: 'Archive', component: ArchiveComponent },
-        { path: 'Project/projects/:id/tasks', component: ListTasksComponent },
+        { path: 'listTasks/projects/:id/tasks', component: ListTasksComponent },
       ],
     },
   

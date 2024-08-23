@@ -50,6 +50,7 @@ import { ChartjsBarComponent } from './header/header/Kpi/kpi/chartjs-bar.compone
 import { ProjectComponent } from './header/header/Project/project/project.component';
 import { ArchiveComponent } from './header/header/Archive/archive/archive.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ProjectsComponent } from './Project/project.component';
 
 
 
@@ -126,6 +127,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     ChartjsBarHorizontalComponent,
     ChartjsRadarComponent,
     ArchiveComponent,
+    ProjectsComponent
     
 
 

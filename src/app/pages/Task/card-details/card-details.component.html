@@ -12,13 +12,13 @@
   
             <div class="form-group">
               <label for="project">Project:</label>
-              <p id="project">{{ task.project }}</p>
+              <p id="project">{{ task.project.name }}</p>
             </div>
   
             <div class="form-group">
               <label for="assigned">Assigned to:</label>
               <div id="assigned">
-                <p *ngFor="let user of task.assigned">{{ user }}</p>
+                <p >{{ task.assigned }}</p>
               </div>
             </div>
   
