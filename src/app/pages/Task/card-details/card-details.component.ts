@@ -8,7 +8,7 @@ import { ProjectService } from '../../../services/project/project.service';
 interface Task {
   id: string;
   name: string;
-  project: string;
+  project: any;
   assigned: string[];
   description: string;
   dueDate: Date;

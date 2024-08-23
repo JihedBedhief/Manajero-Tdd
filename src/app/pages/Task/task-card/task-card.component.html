@@ -5,14 +5,20 @@
   </div>
   <div class="card-content">
     <div class="task-test" *ngFor="let test of task.tests">
-      <input type="checkbox" [(ngModel)]="test.completed" (change)="onTestChange()" />
-      {{ test.name }}
+      <input 
+        type="checkbox" 
+        [checked]="test.status" 
+        (change)="onTestChange(test)" 
+      />
+      {{ test.title }}
     </div>
   </div>
   <div class="card-actions">
-    <button (click)="delete.emit()"><i class="fas fa-trash"></i>
+    <button (click)="delete.emit()">
+      <i class="fas fa-trash"></i>
     </button>
-    <button (click)="edit.emit()"><i class="fas fa-edit"></i>
+    <button (click)="edit.emit()">
+      <i class="fas fa-edit"></i>
     </button>
     <button (click)="viewDetails.emit()">Details</button>
   </div>
