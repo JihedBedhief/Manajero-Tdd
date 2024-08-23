@@ -17,6 +17,7 @@ import { AddttComponent } from './Task/t/addtt/addtt.component';
 import { ImageUploadComponent } from './dynamic/upload/image-upload/image-upload.component';
 import { KpiComponent } from './header/header/Kpi/kpi/kpi.component';
 import { ProjectComponent } from './header/header/Project/project/project.component';
+import { ArchiveComponent } from './header/header/Archive/archive/archive.component';
 
 const routes: Routes = [{
   path: '',
@@ -100,6 +101,8 @@ const routes: Routes = [{
         { path: 'Test', component: TestComponent },
         { path: 'upload', component: ImageUploadComponent },
         { path: 'Project', component: ProjectComponent },
+        { path: 'Archive', component: ArchiveComponent },
+
 
 
 

@@ -48,6 +48,9 @@ import { ChartjsPieComponent } from './header/header/Kpi/kpi/chartjs-pie.compone
 import { ChartjsRadarComponent } from './header/header/Kpi/kpi/chartjs-radar.component';
 import { ChartjsBarComponent } from './header/header/Kpi/kpi/chartjs-bar.component';
 import { ProjectComponent } from './header/header/Project/project/project.component';
+import { ArchiveComponent } from './header/header/Archive/archive/archive.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 
 
@@ -84,6 +87,8 @@ import { ProjectComponent } from './header/header/Project/project/project.compon
     FormsModule,
     ChartModule,
     CommonModule,
+    Ng2SmartTableModule,
+
 
 
 
@@ -119,6 +124,7 @@ import { ProjectComponent } from './header/header/Project/project/project.compon
     ChartjsMultipleXaxisComponent,
     ChartjsBarHorizontalComponent,
     ChartjsRadarComponent,
+    ArchiveComponent,
     
 
 
