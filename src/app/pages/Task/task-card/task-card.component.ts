@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';  // Import CommonModule
-import { FormsModule } from '@angular/forms';    // Import FormsModule
+import { CommonModule } from '@angular/common';  
+import { FormsModule } from '@angular/forms';    
 import { Task } from '../../Models/Task';
 
 
 @Component({
   selector: 'ngx-task-card',
   templateUrl: './task-card.component.html',
-  imports: [CommonModule, FormsModule],  // Import CommonModule and FormsModule
+  imports: [CommonModule, FormsModule],  
   styleUrls: ['./task-card.component.scss'],
   standalone: true 
 })
@@ -16,7 +16,7 @@ export class TaskCardComponent {
   @Output() delete = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
   @Output() viewDetails = new EventEmitter<void>();
-  @Output() statusChange = new EventEmitter<Task>(); // Emit status change
+  @Output() statusChange = new EventEmitter<Task>(); 
 
   onDelete() {
     this.delete.emit();
@@ -32,7 +32,7 @@ export class TaskCardComponent {
 
   onTestChange() {
     this.updateTaskStatus();
-    this.statusChange.emit(this.task); // Emit updated task
+    this.statusChange.emit(this.task); 
   }
 
   updateTaskStatus() {

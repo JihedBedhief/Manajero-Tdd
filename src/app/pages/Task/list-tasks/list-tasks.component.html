@@ -36,7 +36,7 @@
         *ngFor="let task of inProgress; let i = index" 
         [task]="task"
         (delete)="deleteItemm(inProgress, i)"
-        (edit)="editItem(task)"
+        (edit)="openUpdateModal(task)"
         (viewDetails)="openDetailsModal(task)"
         (statusChange)="onStatusChange(task)">
       </ngx-task-card>
@@ -58,7 +58,7 @@
         *ngFor="let task of done; let i = index" 
         [task]="task"
         (delete)="deleteItemm(done, i)"
-        (edit)="editItem(task)"
+        (edit)="openUpdateModal(task)"
         (viewDetails)="openDetailsModal(task)"
         (statusChange)="onStatusChange(task)">
       </ngx-task-card>

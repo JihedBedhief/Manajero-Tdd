@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../../../../services/project/project.service';
@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './update-project.component.html',
   styleUrls: ['./update-project.component.scss']
 })
-export class UpdateProjectComponent {
+export class UpdateProjectComponent implements OnInit{
   ProjectForm!: FormGroup;
 
   constructor(

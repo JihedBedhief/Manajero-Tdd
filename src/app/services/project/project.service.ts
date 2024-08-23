@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Project } from '../../pages/Models/Task';
 
 
 export interface ProjectWithTaskCount {
@@ -32,8 +33,8 @@ export class ProjectService {
   updateProject(id: number, projectdto : any):Observable<any>{
     return this.http.put(BASE_URL+`api/project/${id}`,projectdto);
   }
-  getProjectById(idProject : any):Observable<any>{
-    return this.http.get(BASE_URL+`api/project/${idProject}`
+  getProjectById(id : string):Observable<Project>{
+    return this.http.get<Project>(BASE_URL+`api/project/${id}`
     )
   }
 

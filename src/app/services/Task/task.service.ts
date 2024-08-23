@@ -1,13 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Task,Test } from '../../pages/Models/Task';
-
-
-
+import { Task } from '../../pages/Models/Task';
 const BASE_URL ="http://localhost:9090/";
-
-
 export interface ColabWithTaskCount {
   assigned: string;
   taskCount: number;
@@ -33,8 +28,8 @@ export class TaskService {
   deleteTaskById(idTask : any):Observable<any>{
     return this.http.delete(BASE_URL+`api/task/${idTask}`);
   }
-  updateTask(idTask: number, taskdto : any):Observable<any>{
-    return this.http.put(BASE_URL+`api/task/${idTask}`,taskdto);
+  updateTask(idTask: string, taskdto : any):Observable<any>{
+    return this.http.patch(BASE_URL+`api/task/${idTask}`,taskdto);
   }
   getTaskById(idTask : any):Observable<any>{
     return this.http.get(BASE_URL+`api/task/${idTask}`

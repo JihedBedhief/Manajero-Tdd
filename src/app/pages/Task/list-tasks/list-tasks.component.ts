@@ -57,7 +57,7 @@ export class ListTasksComponent implements OnInit {
       this.addTaskToList(task);
     });
 
-    // Log lists for debugging
+   
     console.log("Todo list:", this.todo);
     console.log("In Progress list:", this.inProgress);
     console.log("Done list:", this.done);
@@ -101,7 +101,7 @@ export class ListTasksComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.onStatusChange(result); // Update the task list
+        this.onStatusChange(result); 
       }
     });
   }
@@ -114,9 +114,9 @@ export class ListTasksComponent implements OnInit {
   }
 
   onStatusChange(updatedTask: Task) {
-    // Remove the task from its previous list
+ 
     this.removeTaskFromList(updatedTask);
-    // Add the task to the correct list based on its updated status
+   
     this.addTaskToList(updatedTask);
   }
 
