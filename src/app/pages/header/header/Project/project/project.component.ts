@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectService } from '../../../../../services/project/project.service';
 import { AddProjectComponent } from '../AddProject/add-project/add-project.component';
 import { UpdateProjectComponent } from '../UpdateProject/update-project/update-project.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnInit{
 
   projects: any[] = [];
   t: any[] = [];
@@ -21,7 +22,9 @@ export class ProjectComponent {
     this.getAllProjects();
   }
 
-  constructor(private _dialogue: MatDialog,private _project:ProjectService){
+  constructor(private _dialogue: MatDialog,private _project:ProjectService,
+    private router: Router
+  ){
   }
 
   getAllProjects() {
@@ -31,7 +34,11 @@ export class ProjectComponent {
     });
   }
 
-
+  // viewTasks(id: string) {
+  //   console.log(id);
+  //   this.router.navigate(['/projects/', id, '/tasks']);
+  // }
+  
   openAddProject() {
     this._dialogue.open(AddProjectComponent);
   }
@@ -41,10 +48,6 @@ export class ProjectComponent {
       data: { id: id }
     });
   }
-
-
-
-
   
   confirmDeleteProject(id: number) {
     if (window.confirm('Are you sure you want to delete this item?')) {
